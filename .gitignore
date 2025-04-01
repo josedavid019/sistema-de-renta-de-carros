@@ -1,0 +1,55 @@
+# Entorno virtual de Python
+venv/
+env/
+
+# Archivos de configuración y credenciales
+*.env
+*.pem
+.env.*
+
+# Archivos de bases de datos locales
+*.sqlite3
+db.sqlite3
+
+# Archivos de caché de Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración de IDEs y editores de texto
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de migraciones no deseados
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/__pycache__/
+
+# Archivos estáticos y generados
+staticfiles/
+media/
+static/
+node_modules/
+
+# Archivos relacionados con Docker (si lo usas en el futuro)
+*.dockerignore
+docker-compose.override.yml
+
+# Dependencias de Python (no es necesario incluirlas si usas `requirements.txt`)
+*.egg-info/
+pip-log.txt
+
+# Archivos de compilación de Django y otros frameworks
+*.mo
+*.pot
+
+# Claves SSH (si las tienes en tu proyecto)
+*.pub
