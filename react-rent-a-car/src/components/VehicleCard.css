@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
+
+* {
+  font-family: 'Nunito', sans-serif;
+  font-weight: bold;
+}
+
+.vehicle-card {
+  height: 10rem;
+  width: 10rem;
+  margin: 6rem;
+}
+
+.vehicle-type {
+
+}
+
+.vehicle-name {
+
+}
+
+.vehicle-image {
+
+}
+
+.vehicle-button {
+
+}

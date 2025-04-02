@@ -2,7 +2,7 @@
 import React from "react";
 import "./Footer.css";
 
-const Footer = () => {
+export function Footer(){
   return (
     <footer className="footer-container">
       <div className="footer-links">
@@ -14,5 +14,3 @@ const Footer = () => {
     </footer>
   );
 };
-
-export default Footer;

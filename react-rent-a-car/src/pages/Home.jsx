@@ -3,7 +3,7 @@ import React from "react";
 import "./Home.css";
 import CarCarousel from "../components/CarCarousel";
 
-const Home = () => {
+export function Home() {
   // Datos de ejemplo para las tarjetas de carros.
   // 'stars' representa la calificación inicial.
   const cars = [
@@ -56,5 +56,3 @@ const Home = () => {
     </div>
   );
 };
-
-export default Home;

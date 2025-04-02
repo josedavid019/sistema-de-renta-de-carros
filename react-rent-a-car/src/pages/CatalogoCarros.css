@@ -4,3 +4,8 @@
   font-family: 'Nunito', sans-serif;
   font-weight: bold;
 }
+
+.catalogo-title {
+  margin-left: 3rem;
+  color: red;
+}
