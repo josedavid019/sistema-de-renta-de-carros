@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-
-* {
-  font-family: 'Nunito', sans-serif;
-  font-weight: bold;
+.catalogo-title {
+  margin-left: 4rem;
+  color: #FF3A3A;
+  font-size: 2.5rem;
 }
 
-.catalogo-title {
-  margin-left: 3rem;
-  color: red;
+.vehicles-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

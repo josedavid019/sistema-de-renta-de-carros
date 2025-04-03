@@ -4,11 +4,11 @@
     height: 100vh;
 }
 
-h2 {
+.register-title {
     color: black;
 }
 
-p {
+.p-text-register {
     color: blue;
 }
 

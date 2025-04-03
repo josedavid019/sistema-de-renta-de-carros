@@ -20,7 +20,7 @@ export function Home() {
       {/* Sección hero con imagen de fondo y formulario de reserva */}
       <section className="hero-section">
         <div className="hero-content">
-          <h1>Bienvenido A Rent a Car</h1>
+          <h1 className="home-title">Bienvenido A Rent a Car</h1>
           <div className="reservation-form">
             <label htmlFor="lugar">Lugar de recogida</label>
             <select id="lugar">

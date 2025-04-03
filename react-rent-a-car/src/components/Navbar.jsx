@@ -28,7 +28,7 @@ export function Navbar() {
           {location.pathname !== "/login" && <a href="/login">Iniciar Sesión</a>}
           {location.pathname !== "/login" && location.pathname !== "/register" && (
             <>
-              <span> |</span>
+              <span> | </span>
             </>
           )}
           {location.pathname !== "/register" && <a href="/register">Registrarse</a>}

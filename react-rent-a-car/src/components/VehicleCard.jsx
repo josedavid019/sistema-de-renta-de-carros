@@ -6,7 +6,7 @@ export function VehicleCard({image, name, type}) {
         <div className="vehicle-card">
             <h2 className="vehicle-type">{type}</h2>
             <h3 className="vehicle-name">{name}</h3>
-            <img className="vehicle-image" src={image} alt={name} />
+            <img className="vehicle-image" src={image} alt={name} /><br />
             <button className="vehicle-button">Abrir</button>
         </div>
     )

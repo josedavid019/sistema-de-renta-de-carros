@@ -1,28 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-
-* {
-  font-family: 'Nunito', sans-serif;
-  font-weight: bold;
-}
-
 .vehicle-card {
-  height: 10rem;
-  width: 10rem;
-  margin: 6rem;
+  height: 25rem;
+  width: 20rem;
+  margin: 0 6rem 6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .vehicle-type {
-
+  font-size: 2rem;
+  color: #FF3A3A;
 }
 
 .vehicle-name {
-
+  font-size: 1rem;
 }
 
 .vehicle-image {
-
+  margin: 1rem;
 }
 
 .vehicle-button {
+  width: 160px;
+  height: 50px;
+  background: #FF3A3A;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+  margin: 0 auto;
+}
 
+.vehicle-button:hover {
+  background-color: #c00;
 }
