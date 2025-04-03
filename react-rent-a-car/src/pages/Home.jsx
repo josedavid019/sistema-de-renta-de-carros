@@ -2,8 +2,11 @@
 import React from "react";
 import "./Home.css";
 import CarCarousel from "../components/CarCarousel";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
+  const navigate = useNavigate();
+
   // Datos de ejemplo para las tarjetas de carros.
   // 'stars' representa la calificación inicial.
   const cars = [
@@ -15,6 +18,11 @@ export function Home() {
     { carId: 6, imageSrc: "/ruta/de/imagen6.jpg", stars: 4, carName: "Carro F" },
   ];
 
+  // Función para cambiar a la página de reserva.
+  const handleReservar = () => {
+    navigate("/reservar");
+  };
+
   return (
     <div className="home-container">
       {/* Sección hero con imagen de fondo y formulario de reserva */}
@@ -25,7 +33,6 @@ export function Home() {
             <label htmlFor="lugar">Lugar de recogida</label>
             <select id="lugar">
               <option value="">Selecciona un lugar</option>
-              <option value="aeropuerto">Aeropuerto</option>
               <option value="oficina">Oficina Central</option>
             </select>
 
@@ -43,7 +50,9 @@ export function Home() {
             <label htmlFor="fechaEntrega">Fecha de entrega</label>
             <input type="date" id="fechaEntrega" className="date-field" />
 
-            <button className="btn-reservar">Reservar</button>
+            <button className="btn-reservar" onClick={handleReservar}>
+              Reservar
+            </button>
           </div>
         </div>
       </section>
@@ -55,4 +64,4 @@ export function Home() {
       </section>
     </div>
   );
-};
+}

@@ -7,6 +7,7 @@ import { CatalogoCarros } from "./pages/CatalogoCarros";
 import { Login } from "./pages/Login";
 import { Register } from "./pages/Register";
 import { Footer } from "./components/Footer";
+import Reservar from "./pages/Reservar";  // Nueva importación
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/reservar" element={<Reservar />} />  {/* Nueva ruta */}
         <Route path="/catalogo" element={<CatalogoCarros />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
