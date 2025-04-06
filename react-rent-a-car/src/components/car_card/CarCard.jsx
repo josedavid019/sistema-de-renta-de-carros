@@ -1,6 +1,6 @@
 // src/components/CarCard.jsx
 import React from "react";
-import StarRating from "./StarRating";
+import StarRating from "../star_rating/StarRating";
 import "./CarCard.css";
 
 const CarCard = ({ carId, imageSrc, carName, initialRating }) => {

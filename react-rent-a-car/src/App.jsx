@@ -1,13 +1,13 @@
 // src/App.jsx
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import React from "react";
-import { Home } from "./pages/Home";
-import { Navbar } from "./components/Navbar";
-import { CatalogoCarros } from "./pages/CatalogoCarros";
-import { Login } from "./pages/Login";
-import { Register } from "./pages/Register";
-import { Footer } from "./components/Footer";
-import Reservar from "./pages/Reservar";  // Nueva importación
+import { Home } from "./pages/home/Home";
+import { Navbar } from "./components/nav_bar/Navbar";
+import { CatalogoCarros } from "./pages/catalogo_carros/CatalogoCarros";
+import { Login } from "./pages/login/Login";
+import { Register } from "./pages/register/Register";
+import { Footer } from "./components/footer/Footer";
+import { Reservar } from "./pages/reservar/Reservar";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/reservar" element={<Reservar />} />  {/* Nueva ruta */}
+        <Route path="/reservar" element={<Reservar />} />
         <Route path="/catalogo" element={<CatalogoCarros />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

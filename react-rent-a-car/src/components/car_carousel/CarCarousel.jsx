@@ -1,6 +1,6 @@
 // src/components/CarCarousel.jsx
 import React, { useState, useEffect } from "react";
-import CarCard from "./CarCard";
+import CarCard from "../car_card/CarCard";
 import "./CarCarousel.css";
 
 const CarCarousel = ({ cars, interval = 3000 }) => {

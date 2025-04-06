@@ -1,4 +1,4 @@
-.vehicle-card {
+.vehicle-card-catalog {
   height: 25rem;
   width: 20rem;
   margin: 0 6rem 6rem;
@@ -8,20 +8,20 @@
   text-align: center;
 }
 
-.vehicle-type {
+.vehicle-type-catalog {
   font-size: 2rem;
   color: #FF3A3A;
 }
 
-.vehicle-name {
+.vehicle-name-catalog {
   font-size: 1rem;
 }
 
-.vehicle-image {
+.vehicle-image-catalog {
   margin: 1rem;
 }
 
-.vehicle-button {
+.vehicle-button-catalog {
   width: 160px;
   height: 50px;
   background: #FF3A3A;
@@ -36,6 +36,6 @@
   margin: 0 auto;
 }
 
-.vehicle-button:hover {
+.vehicle-button-catalog:hover {
   background-color: #c00;
 }

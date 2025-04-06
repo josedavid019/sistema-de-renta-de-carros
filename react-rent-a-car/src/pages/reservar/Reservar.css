@@ -1,12 +1,4 @@
 /* Reservar.css */
-
-/* Fuente global (asegúrate de importarla si no lo hiciste en un archivo global) */
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap');
-* {
-  font-family: 'Nunito', sans-serif;
-  font-weight: bold;
-}
-
 .reservar-container {
   padding: 20px;
   text-align: center;

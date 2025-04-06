@@ -1,7 +1,7 @@
 // src/pages/Home.jsx
 import React, { useState } from "react";
 import "./Home.css";
-import CarCarousel from "../components/CarCarousel";
+import CarCarousel from "../../components/car_carousel/CarCarousel";
 import { useNavigate } from "react-router-dom";
 
 export function Home() {

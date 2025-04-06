@@ -1,7 +1,7 @@
 import React from "react";
 import "./Reservar.css";
 
-const Reservar = ({ goToHome }) => {
+export function Reservar({ goToHome }) {
   // Indicador de etapas: el primer stage está completado, el segundo es activo.
   const stages = [
     { title: "Agencia, fecha y hora de reserva", completed: true },
@@ -69,5 +69,3 @@ const Reservar = ({ goToHome }) => {
     </div>
   );
 };
-
-export default Reservar;

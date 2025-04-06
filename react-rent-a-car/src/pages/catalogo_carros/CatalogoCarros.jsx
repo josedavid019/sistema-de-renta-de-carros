@@ -1,6 +1,6 @@
 import React from "react";
 import "./CatalogoCarros.css";
-import { VehicleCard } from "../components/VehicleCard";
+import { VehicleCard } from "../../components/vehicle_card/VehicleCard";
 
 export function CatalogoCarros() {
 
