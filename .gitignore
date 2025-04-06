@@ -1,16 +1,96 @@
-# Para Node.js (React)
+# FRONTEND
+# Node.js
 node_modules/
-dist/
-build/
-.env
 
-# Para Python (Django)
+# Build output
+/dist/
+/build/
+
+# Vite
+.vite/
+
+# IDEs y editores
+/.idea/
+/.vscode/
+
+# Dependencias locales y temporales
+package-lock.json
+yarn.lock
+
+# Archivos de logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Archivos generados por el entorno
 venv/
-*.pyc
-__pycache__/
-*.sqlite3
+/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Archivos temporales de IDEs
+# Archivos de configuración de VS Code
+.vscode/
+
+# Carpetas y archivos específicos de sistemas operativos
+.DS_Store
+Thumbs.db
+
+
+# BACKEND
+# Entorno virtual de Python
+venv/
+env/
+
+# Archivos de configuración y credenciales
+*.env
+*.pem
+.env.*
+
+# Archivos de bases de datos locales
+*.sqlite3
+db.sqlite3
+
+# Archivos de caché de Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Configuración de IDEs y editores de texto
 .vscode/
 .idea/
 *.swp
+*.swo
+
+# Archivos de logs
+logs/
+*.log
+
+# Archivos de migraciones no deseados
+*/migrations/*.pyc
+*/migrations/*.pyo
+*/migrations/*.pyd
+*/migrations/__pycache__/
+
+# Archivos estáticos y generados
+staticfiles/
+media/
+static/
+node_modules/
+
+# Archivos relacionados con Docker (si lo usas en el futuro)
+*.dockerignore
+docker-compose.override.yml
+
+# Dependencias de Python (no es necesario incluirlas si usas `requirements.txt`)
+*.egg-info/
+pip-log.txt
+
+# Archivos de compilación de Django y otros frameworks
+*.mo
+*.pot
+
+# Claves SSH (si las tienes en tu proyecto)
+*.pub
