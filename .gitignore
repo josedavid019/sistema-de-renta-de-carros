@@ -1,3 +1,7 @@
+# Carpetas y archivos del frontend
+django_rent_a_car/
+users/
+
 # Node.js
 node_modules/
 
