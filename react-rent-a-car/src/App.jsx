@@ -8,6 +8,7 @@ import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { Footer } from "./components/footer/Footer";
 import { Reservar } from "./pages/reservar/Reservar";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register" element={<Register />} />
       </Routes>
       <Footer />
+      <Toaster />
     </BrowserRouter>
   );
 }

@@ -8,12 +8,21 @@ export function Register() {
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
+  const password = watch("password", "");
+
   const onSubmit = handleSubmit(async (data) => {
     await createUser(data);
-    toast.success("Usuario creado correctamente");
+    toast.success("Usuario creado correctamente", {
+      position: "bottom-right",
+      style: {
+        background: "#101010",
+        color: "#fff",
+      },
+    });
   });
   return (
     <form onSubmit={onSubmit}>
@@ -21,24 +30,37 @@ export function Register() {
         <div className="register-box">
           <h2 className="register-title">Registrarse</h2>
           <input
+            className="input-email-register"
             type="text"
             placeholder="Correo"
             {...register("email", { required: true })}
           />
           {errors.email && <span>Email es requerido</span>}
           <input
+            className="input-pass-register"
             type="password"
             placeholder="Contraseña"
             {...register("password", { required: true })}
           />
           {errors.password && <span>Contraseña es requerida</span>}
-          <input type="password" placeholder="Confirmar Contraseña" />
-          <a href="#">¿Olvidaste la contraseña?</a>
+          <input
+            className="input-confirm-pass-register"
+            type="password"
+            placeholder="Confirmar Contraseña"
+            {...register("confirmPassword", {
+              required: true,
+              validate: (value) =>
+                value === password || "Las contraseñas no coinciden",
+            })}
+          />
+          {errors.confirmPassword && (
+            <span>{errors.confirmPassword.message}</span>
+          )}
           <button className="register-btn">Registrar</button>
           <p className="p-text-register">
-            ¿Ya tienes cuenta? <a href="/">Login</a>
+            ¿Ya tienes cuenta? <a className="text-login" href="/login">Inicar sesión</a>
           </p>
-          <button className="google-btn">Continuar con Google</button>
+          <button className="google-btn-register">Continuar con Google</button>
         </div>
       </div>
     </form>
