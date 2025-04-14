@@ -1,9 +1,9 @@
 // src/components/CarCard.jsx
 import React from "react";
-import StarRating from "../star_rating/StarRating";
+import { StarRating } from "../star-rating/StarRating";
 import "./CarCard.css";
 
-const CarCard = ({ carId, imageSrc, carName, initialRating }) => {
+export function CarCard({ carId, imageSrc, carName, initialRating }) {
   return (
     <div className="car-card">
       <div className="stars">
@@ -18,5 +18,3 @@ const CarCard = ({ carId, imageSrc, carName, initialRating }) => {
     </div>
   );
 };
-
-export default CarCard;

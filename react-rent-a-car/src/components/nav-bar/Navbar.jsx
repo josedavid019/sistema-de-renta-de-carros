@@ -21,7 +21,7 @@ export function Navbar() {
         {location.pathname !== "/catalogo" && location.pathname !== "/login" && location.pathname !== "/register" && (
           <>
             <a href="/catalogo">Catálogo Carros</a>
-            <a href="#reservas">Mis Reservas</a>
+            <a href="/mis-reservas">Mis Reservas</a>
           </>
         )}
         <div className="navbar-login">

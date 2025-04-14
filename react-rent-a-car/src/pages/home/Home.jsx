@@ -1,7 +1,6 @@
-// src/pages/Home.jsx
 import React, { useState } from "react";
 import "./Home.css";
-import CarCarousel from "../../components/car_carousel/CarCarousel";
+import { CarCarousel } from "../../components/car-carousel/CarCarousel";
 import { useNavigate } from "react-router-dom";
 
 export function Home() {
@@ -89,8 +88,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-      {/* Sección de recomendación con carrusel de carros */}
       <section className="recommendation-section">
         <h2>Carros Destacados</h2>
         <CarCarousel cars={cars} interval={2000} />

@@ -1,9 +1,9 @@
 // src/components/CarCarousel.jsx
 import React, { useState, useEffect } from "react";
-import CarCard from "../car_card/CarCard";
+import { CarCard } from "../car-card/CarCard";
 import "./CarCarousel.css";
 
-const CarCarousel = ({ cars, interval = 3000 }) => {
+export function CarCarousel({ cars, interval = 3000 }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = Math.ceil(cars.length / 3); // 3 tarjetas por slide
 
@@ -34,5 +34,3 @@ const CarCarousel = ({ cars, interval = 3000 }) => {
     </div>
   );
 };
-
-export default CarCarousel;

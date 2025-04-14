@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const StarRating = ({ initialRating = 0, carId }) => {
+export function StarRating({ initialRating = 0, carId }) {
   const [rating, setRating] = useState(initialRating);
 
   const handleStarClick = (index) => {
@@ -31,5 +31,3 @@ const StarRating = ({ initialRating = 0, carId }) => {
     </div>
   );
 };
-
-export default StarRating;
