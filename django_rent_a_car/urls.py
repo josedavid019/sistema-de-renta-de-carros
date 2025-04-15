@@ -21,6 +21,7 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView, Sp
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),
+    path('rents/', include('rents.urls')),
 
     # DOCUMENTATION API
     # Genera el esquema de la API en formato OpenAPI (JSON/YAML)

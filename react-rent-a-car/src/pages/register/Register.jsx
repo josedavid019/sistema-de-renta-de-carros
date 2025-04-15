@@ -58,7 +58,10 @@ export function Register() {
           )}
           <button className="register-btn">Registrar</button>
           <p className="p-text-register">
-            ¿Ya tienes cuenta? <a className="text-login" href="/login">Inicar sesión</a>
+            ¿Ya tienes cuenta?{" "}
+            <a className="text-login" href="/login">
+              Inicar sesión
+            </a>
           </p>
           <button className="google-btn-register">Continuar con Google</button>
         </div>
