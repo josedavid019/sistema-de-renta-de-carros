@@ -23,8 +23,7 @@ export function Home() {
     toast.success("", {
       position: "bottom-right",
       style: {
-        background: "#fff",
-        color: "#fff",
+        background: "#ff3a3a",
       },
     });
   });
