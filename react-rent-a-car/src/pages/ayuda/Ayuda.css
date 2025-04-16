@@ -56,3 +56,9 @@
   font-size: 1.1rem;
   color: #333;
 }
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}

@@ -1,15 +1,38 @@
 import React, { useState } from "react";
 import "./Ayuda.css";
+import { createReporte } from "../../api/report";
 
 export function Ayuda() {
   const [email, setEmail] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitted(true);
+    setLoading(true);
+    setError("");
+
+  const reporte = {
+    correo_usuario: email,
+    descripcion: descripcion,
   };
+
+   try {
+
+      console.log("Enviando el siguiente reporte:", reporte);
+      await createReporte(reporte);
+      setSubmitted(true);
+    } catch (err) {
+      setError("Hubo un problema al enviar el reporte. Intenta nuevamente.");
+      console.error("Error al enviar el reporte:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
 
   return (
     <div className="ayuda-container">
@@ -33,7 +56,12 @@ export function Ayuda() {
             required
           ></textarea>
 
-          <button type="submit">Enviar</button>
+          {error && <p className="error-message">{error}</p>}
+
+          <button type="submit" disabled={loading}>
+            {loading ? "Enviando..." : "Enviar"}
+          </button>
+
         </form>
       ) : (
         <div className="ayuda-confirmation">
