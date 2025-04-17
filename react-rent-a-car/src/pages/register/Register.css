@@ -27,7 +27,7 @@
   align-items: center;
 }
 
-.input-email-register,
+.input-user-register,
 .input-pass-register,
 .input-confirm-pass-register {
   margin: 0.5rem 1rem;
@@ -61,14 +61,4 @@
 
 .text-login {
   color: #ff3a3a;
-}
-
-.google-btn-register {
-  width: 50%;
-  padding: 0.2rem 0.5rem;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
 }

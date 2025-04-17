@@ -7,5 +7,6 @@ router.register(r'users', views.UserView, 'users')
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('api/login/', views.LoginView.as_view(), name='login'),  # Login
+    path('api/register/', views.register_user, name='register'),
+    path('api/login/', views.login_user, name='login'),
 ]

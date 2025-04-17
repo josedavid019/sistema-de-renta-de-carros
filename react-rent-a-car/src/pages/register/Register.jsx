@@ -1,5 +1,5 @@
 import React from "react";
-import { createUser } from "../../api/users.api";
+import { registerUser } from "../../api/users.api";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import "./Register.css";
@@ -15,14 +15,21 @@ export function Register() {
   const password = watch("password", "");
 
   const onSubmit = handleSubmit(async (data) => {
-    await createUser(data);
-    toast.success("Usuario creado correctamente", {
-      position: "bottom-right",
-      style: {
-        background: "#101010",
-        color: "#fff",
-      },
-    });
+    try {
+      await registerUser(data);
+      toast.success("Usuario creado correctamente", {
+        position: "bottom-right",
+        style: {
+          background: "#101010",
+          color: "#fff",
+        },
+      });
+    } catch (error) {
+      toast.error("Error al registrar usuario", {
+        position: "bottom-right",
+      });
+      console.error(error.response?.data || error.message);
+    }
   });
   return (
     <form onSubmit={onSubmit}>
@@ -30,12 +37,12 @@ export function Register() {
         <div className="register-box">
           <h2 className="register-title">Registrarse</h2>
           <input
-            className="input-email-register"
+            className="input-user-register"
             type="text"
-            placeholder="Correo"
-            {...register("email", { required: true })}
+            placeholder="Usuario"
+            {...register("username", { required: true })}
           />
-          {errors.email && <span>Email es requerido</span>}
+          {errors.username && <span>Usuario es requerido</span>}
           <input
             className="input-pass-register"
             type="password"
@@ -63,7 +70,6 @@ export function Register() {
               Inicar sesión
             </a>
           </p>
-          <button className="google-btn-register">Continuar con Google</button>
         </div>
       </div>
     </form>

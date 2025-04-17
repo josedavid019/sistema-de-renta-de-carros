@@ -5,7 +5,7 @@
 }
 
 .login-title {
-  color: #FF3A3A;
+  color: #ff3a3a;
   font-size: 2rem;
 }
 
@@ -31,7 +31,8 @@
   align-items: center;
 }
 
-.input-user, .input-pass {
+.input-user,
+.input-pass {
   margin: 0.5rem 1rem;
   align-items: center;
   width: 85%;
@@ -44,7 +45,7 @@
 .login-btn {
   width: 160px;
   height: 50px;
-  background: #FF3A3A;
+  background: #ff3a3a;
   color: white;
   font-size: 18px;
   font-weight: bold;
@@ -62,15 +63,5 @@
 }
 
 .text-register {
-  color: #FF3A3A;
-}
-
-.google-btn-login {
-  width: 50%;
-  padding: 0.2rem 0.5rem;
-  background-color: white;
-  border: 1px solid black;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
+  color: #ff3a3a;
 }

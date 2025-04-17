@@ -244,10 +244,7 @@ export function Home() {
             </div>
           </div>
           <div>
-            <button
-              className="btn-reservar"
-              // onClick={handleReservar}
-            >
+            <button className="btn-reservar" onClick={handleReservar}>
               Reservar
             </button>
           </div>

@@ -1,9 +1,16 @@
-// src/pages/Reservar.jsx
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import "./Reservar.css";
 
 export function Reservar({ goToHome }) {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const navigate = useNavigate();
   const location = useLocation();
 
