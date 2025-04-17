@@ -14,7 +14,7 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
-  const { login } = useAuth(); // ✅ usar login del contexto
+  const { login } = useAuth();
 
   const onSubmit = handleSubmit(async (data) => {
     try {
@@ -22,15 +22,11 @@ export function Login() {
       if (response.access) {
         localStorage.setItem("access", response.access);
         localStorage.setItem("refresh", response.refresh);
-
-        // Construimos el objeto user
         const userData = {
           id: response.user_id,
           username: response.username,
           role: response.role,
         };
-
-        // ✅ Actualizamos el contexto
         login(userData);
 
         toast.success("¡Inicio de sesión exitoso!", {
@@ -40,8 +36,6 @@ export function Login() {
             color: "#fff",
           },
         });
-
-        // ✅ Redirigimos según el rol
         const role = response.role;
         if (role === "admin") {
           navigate("/admin");

@@ -1,9 +1,7 @@
 import axios from "axios";
 
-
 const reportesApi = axios.create({
-    baseURL: "http://localhost:8000/api/report/",
-
+  baseURL: "http://localhost:8000/report/",
 });
 
 export const getAllReportes = () => reportesApi.get("listar/");

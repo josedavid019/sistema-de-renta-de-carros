@@ -37,6 +37,27 @@ export function Register() {
         <div className="register-box">
           <h2 className="register-title">Registrarse</h2>
           <input
+            className="register-input"
+            type="text"
+            placeholder="Primer Nombre"
+          />
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Segundo Nombre"
+          />
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Primer Apellido"
+          />
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Segundo Apellido"
+          />
+          <input className="register-input" type="number" placeholder="CC" />
+          <input
             className="input-user-register"
             type="text"
             placeholder="Usuario"

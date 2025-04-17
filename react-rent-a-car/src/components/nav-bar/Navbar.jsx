@@ -37,9 +37,11 @@ export function Navbar() {
             <Link to="/catalogo" className="navbar-right-item">
               Catálogo Carros
             </Link>
-            <Link to="/mis-reservas" className="navbar-right-item">
-              Mis Reservas
-            </Link>
+            {location.pathname !== "/mis-reservas" && (
+              <Link to="/mis-reservas" className="navbar-right-item">
+                Mis Reservas
+              </Link>
+            )}
             <div className="navbar-login">
               {location.pathname !== "/login" && (
                 <Link to="/login" className="navbar-right-item">
@@ -60,6 +62,20 @@ export function Navbar() {
           user?.role === "admin" ||
           user?.role === "recepcionista") && (
           <>
+            {user?.role === "admin" && (
+              <>
+                {location.pathname !== "/catalogo" && (
+                  <Link to="/catalogo" className="navbar-right-item">
+                    Catálogo Carros
+                  </Link>
+                )}
+                {location.pathname !== "/mis-reservas" && (
+                  <Link to="/mis-reservas" className="navbar-right-item">
+                    Mis Reservas
+                  </Link>
+                )}
+              </>
+            )}
             <div className="navbar-menu">
               <div className="navbar-menu-initials" onClick={toggleMenu}>
                 {user.username?.substring(0, 2).toUpperCase()}
@@ -129,39 +145,6 @@ export function Navbar() {
             )}
           </>
         )}
-        {/* {user?.role === "admin" && (
-          <>
-            <div className="navbar-menu">
-              <div className="navbar-menu-initials" onClick={toggleMenu}>
-                {user.username?.substring(0, 2).toUpperCase()}
-              </div>
-              <div className="navbar-dropdown-arrow" onClick={toggleMenu}>
-                ▾
-              </div>
-            </div>
-            {menuOpen && (
-              <div className="navbar-dropdown-menu">
-                <Link to="/gestion-clientes" className="navbar-dropdown-item">
-                  Gestionar Clientes
-                </Link>
-                <Link to="/gestion-vehiculos" className="navbar-dropdown-item">
-                  Gestionar Vehiculos
-                </Link>
-                <Link to="/gestion-empleados" className="navbar-dropdown-item">
-                  Gestionar Empleados
-                </Link>
-                <hr className="navbar-dropdown-line" />
-                <span
-                  className="navbar-dropdown-item"
-                  onClick={handleLogout}
-                  style={{ cursor: "pointer" }}
-                >
-                  Cerrar sesión
-                </span>
-              </div>
-            )}
-          </>
-        )} */}
       </div>
     </nav>
   );
