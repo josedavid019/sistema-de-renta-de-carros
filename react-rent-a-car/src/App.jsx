@@ -16,7 +16,6 @@ import { Reservar } from "./pages/reservar/Reservar";
 
 import { Admin } from "./pages/employees/Admin";
 import { Receptionist } from "./pages/employees/receptionist";
-import { NavbarEmployee } from "./components/navbar-employee/NavbarEmployee";
 import { Informes } from "./pages/informes/Informes";
 import { HistorialReservas } from "./pages/historial-reservas/HistorialReservas";
 import { GestionCliente } from "./pages/gestion-cliente/GestionCliente";
