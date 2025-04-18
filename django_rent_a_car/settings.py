@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'users',
     'rents',
     'report',
+    'catalog',
+
 ]
 
 MIDDLEWARE = [
@@ -80,26 +82,26 @@ WSGI_APPLICATION = 'django_rent_a_car.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',  # Esto creará un archivo de base de datos SQLite en tu proyecto
-#     }
-# }
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rentacar_db',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
-        },
-    }
+     'default': {
+         'ENGINE': 'django.db.backends.sqlite3',
+         'NAME': BASE_DIR / 'db.sqlite3',
+     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'rentacar_db',
+#        'USER': 'root',
+#        'PASSWORD': '1234',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#        'OPTIONS': {
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#        },
+#    }
+#}
 
 
 
@@ -146,7 +148,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # CORS AUTHRIZATION
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
+    'http://localhost:5179',
 ]
 
 REST_FRAMEWORK = {
