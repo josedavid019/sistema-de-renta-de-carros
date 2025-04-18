@@ -37,27 +37,6 @@ export function Register() {
         <div className="register-box">
           <h2 className="register-title">Registrarse</h2>
           <input
-            className="register-input"
-            type="text"
-            placeholder="Primer Nombre"
-          />
-          <input
-            className="register-input"
-            type="text"
-            placeholder="Segundo Nombre"
-          />
-          <input
-            className="register-input"
-            type="text"
-            placeholder="Primer Apellido"
-          />
-          <input
-            className="register-input"
-            type="text"
-            placeholder="Segundo Apellido"
-          />
-          <input className="register-input" type="number" placeholder="CC" />
-          <input
             className="input-user-register"
             type="text"
             placeholder="Usuario"
@@ -84,6 +63,62 @@ export function Register() {
           {errors.confirmPassword && (
             <span>{errors.confirmPassword.message}</span>
           )}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Primer Nombre"
+            {...register("firstname", { required: true })}
+          />
+          {errors.firstname && <span>Primer Nombre es requerido</span>}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Segundo Nombre"
+            {...register("secondname", { required: true })}
+          />
+          {errors.secondname && <span>Segundo Nombre es requerido</span>}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Primer Apellido"
+            {...register("lastname", { required: true })}
+          />
+          {errors.lastname && <span>Primer Apellido es requerido</span>}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Segundo Apellido"
+            {...register("second_lastname", { required: true })}
+          />
+          {errors.second_lastname && <span>Segundo Apellido es requerido</span>}
+          <input
+            className="register-input"
+            type="date"
+            placeholder="Fecha de Nacimiento"
+            {...register("dateofbirth", { required: true })}
+          />
+          {errors.dateofbirth && <span>Fecha de Nacimiento es requerida</span>}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="CC"
+            {...register("cedula", { required: true })}
+          />
+          {errors.cedula && <span>CC es requerida</span>}
+          <input
+            className="register-input"
+            type="email"
+            placeholder="Email"
+            {...register("email", { required: true })}
+          />
+          {errors.email && <span>Email es requerido</span>}
+          <input
+            className="register-input"
+            type="text"
+            placeholder="Telefono"
+            {...register("phone", { required: true })}
+          />
+          {errors.phone && <span>Telefono es requerido</span>}
           <button className="register-btn">Registrar</button>
           <p className="p-text-register">
             ¿Ya tienes cuenta?{" "}

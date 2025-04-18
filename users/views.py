@@ -3,9 +3,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import UserSerializer
 from .models import User, Role
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password, check_password
 from rest_framework_simplejwt.tokens import RefreshToken
-from django.contrib.auth.hashers import check_password
 
 class UserView(viewsets.ModelViewSet):
     serializer_class = UserSerializer
@@ -15,14 +14,23 @@ class UserView(viewsets.ModelViewSet):
 def register_user(request):
     data = request.data
     try:
+        role = None
         if 'role' in data:
-            role = Role.objects.get(id=data['role'])
+            role = Role.objects.get(role_id=data['role'])
         else:
-            role = Role.objects.get(name__iexact="cliente")
+            role = Role.objects.get(role_name__iexact="cliente")
 
         user = User(
-            username=data['username'],
-            password=make_password(data['password']),
+            user_username=data['username'],
+            user_password=make_password(data['password']),
+            user_firstname=data.get('firstname', ''),
+            user_secondname=data.get('secondname', ''),
+            user_lastname=data.get('lastname', ''),
+            user_second_lastname=data.get('second_lastname', ''),
+            user_dateofbirth=data.get('dateofbirth'),
+            user_cedula=data.get('cedula'),
+            user_email=data.get('email'),
+            user_phone=data.get('phone', ''),
             role=role
         )
         user.save()
@@ -32,21 +40,21 @@ def register_user(request):
         return Response({"error": "Rol cliente no existe"}, status=400)
     except Exception as e:
         return Response({"error": str(e)}, status=500)
-    
+
 @api_view(['POST'])
 def login_user(request):
     data = request.data
     try:
-        user = User.objects.get(username=data['username'])
+        user = User.objects.get(user_username=data['username'])
 
-        if check_password(data['password'], user.password):
+        if check_password(data['password'], user.user_password):
             refresh = RefreshToken.for_user(user)
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
-                'user_id': user.id,
-                'username': user.username,
-                'role': user.role.name if user.role else None
+                'user_id': user.user_id,
+                'username': user.user_username,
+                'role': user.role.role_name if user.role else None
             })
         else:
             return Response({'error': 'Contraseña incorrecta'}, status=401)

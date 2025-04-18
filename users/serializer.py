@@ -4,28 +4,23 @@ from .models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'password', 'role']
+        fields = [
+            'user_id',
+            'user_username',
+            'user_password',
+            'user_firstname',
+            'user_secondname',
+            'user_lastname',
+            'user_second_lastname',
+            'user_dateofbirth',
+            'user_cedula',
+            'user_email',
+            'user_phone',
+            'user_isactive',
+            'user_created',
+            'user_updated',
+            'role',
+        ]
         extra_kwargs = {
             'password': {'write_only': True}
         }
-
-# class LoginSerializer(serializers.Serializer):
-#     email = serializers.EmailField()
-#     password = serializers.CharField(write_only=True)
-
-#     def validate(self, data):
-#         email = data.get("email")
-#         password = data.get("password")
-
-#         try:
-#             # Buscar usuario por email
-#             user = User.objects.get(email=email)
-#         except User.DoesNotExist:
-#             raise serializers.ValidationError("Credenciales inválidas. Usuario no encontrado.")
-
-#         # Verificar contraseña
-#         if not user.check_password(password):
-#             raise serializers.ValidationError("Credenciales inválidas. Contraseña incorrecta.")
-
-#         data["user"] = user
-#         return data
