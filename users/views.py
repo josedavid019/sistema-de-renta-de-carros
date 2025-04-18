@@ -1,4 +1,4 @@
-from rest_framework import viewsets
+from rest_framework import viewsets, status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .serializer import UserSerializer
@@ -14,6 +14,10 @@ class UserView(viewsets.ModelViewSet):
 def register_user(request):
     data = request.data
     try:
+        # Verificar si el user_username ya existe
+        if User.objects.filter(user_username=data['user_username']).exists():
+            return Response({"error": "El nombre de usuario ya está en uso"}, status=status.HTTP_400_BAD_REQUEST)
+
         role = None
         if 'role' in data:
             role = Role.objects.get(role_id=data['role'])
@@ -21,33 +25,35 @@ def register_user(request):
             role = Role.objects.get(role_name__iexact="cliente")
 
         user = User(
-            user_username=data['username'],
-            user_password=make_password(data['password']),
-            user_firstname=data.get('firstname', ''),
-            user_secondname=data.get('secondname', ''),
-            user_lastname=data.get('lastname', ''),
-            user_second_lastname=data.get('second_lastname', ''),
-            user_dateofbirth=data.get('dateofbirth'),
-            user_cedula=data.get('cedula'),
-            user_email=data.get('email'),
-            user_phone=data.get('phone', ''),
+            user_username=data['user_username'],
+            user_password=make_password(data['user_password']),
+            user_firstname=data.get('user_firstname', ''),
+            user_secondname=data.get('user_secondname', ''),
+            user_lastname=data.get('user_lastname', ''),
+            user_second_lastname=data.get('user_second_lastname', ''),
+            user_dateofbirth=data.get('user_dateofbirth'),
+            user_cedula=data.get('user_cedula'),
+            user_email=data.get('user_email'),
+            user_phone=data.get('user_phone', ''),
             role=role
         )
         user.save()
-        return Response({"message": "Usuario creado correctamente"})
+        return Response({"message": "Usuario creado correctamente"}, status=status.HTTP_201_CREATED)
 
     except Role.DoesNotExist:
-        return Response({"error": "Rol cliente no existe"}, status=400)
+        return Response({"error": "Rol no encontrado"}, status=status.HTTP_400_BAD_REQUEST)
     except Exception as e:
-        return Response({"error": str(e)}, status=500)
+        return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 @api_view(['POST'])
 def login_user(request):
     data = request.data
     try:
-        user = User.objects.get(user_username=data['username'])
+        # Buscar usando el campo user_username
+        user = User.objects.get(user_username=data['user_username'])
 
-        if check_password(data['password'], user.user_password):
+        # Verificar contra user_password
+        if check_password(data['user_password'], user.user_password):
             refresh = RefreshToken.for_user(user)
             return Response({
                 'refresh': str(refresh),

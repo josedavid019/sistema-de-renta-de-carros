@@ -18,47 +18,60 @@ export function Login() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
+      // data ya tiene: { user_username: "...", user_password: "..." }
       const response = await loginUser(data);
+
       if (response.access) {
         localStorage.setItem("access", response.access);
         localStorage.setItem("refresh", response.refresh);
-        const userData = {
+        login({
           id: response.user_id,
           username: response.username,
           role: response.role,
-        };
-        login(userData);
+        });
 
-        toast.success("¡Inicio de sesión exitoso!", {
+        toast.success("Incio de sesion exitoso", {
           position: "bottom-right",
           style: {
-            background: "#101010",
+            background: "#ff3a3a",
             color: "#fff",
           },
         });
-        const role = response.role;
-        if (role === "admin") {
-          navigate("/admin");
-        } else if (role === "cliente") {
-          navigate("/home");
-        } else if (role === "recepcionista") {
-          navigate("/recepcionista");
-        } else if (role === "personal_entrega") {
-          navigate("/employee-home");
-        } else if (role === "personal_recepcion") {
-          navigate("/employee-home");
-        } else {
-          navigate("/home");
+
+        // Redirección según rol
+        switch (response.role) {
+          case "admin":
+            navigate("/admin");
+            break;
+          case "cliente":
+            navigate("/home");
+            break;
+          case "recepcionista":
+            navigate("/recepcionista");
+            break;
+          case "personal_entrega":
+          case "personal_recepcion":
+            navigate("/employee-home");
+            break;
+          default:
+            navigate("/home");
         }
       } else {
-        console.error(response.error);
-        toast.error(response.error || "Error al iniciar sesión", {
+        toast.error("Error al iniciar sesión", {
           position: "bottom-right",
+          style: {
+            background: "#fff",
+            color: "#ff3a3a",
+          },
         });
       }
     } catch (error) {
       toast.error("Error al iniciar sesión", {
         position: "bottom-right",
+        style: {
+          background: "#fff",
+          color: "#ff3a3a",
+        },
       });
       console.error(error.response?.data || error.message);
     }
@@ -73,17 +86,21 @@ export function Login() {
             className="input-user"
             type="text"
             placeholder="Usuario"
-            {...register("username", { required: "Este campo es obligatorio" })}
+            {...register("user_username", {
+              required: "Este campo es obligatorio",
+            })}
           />
-          {errors.username && <span>{errors.username.message}</span>}
+          {errors.user_username && <span>{errors.user_username.message}</span>}
 
           <input
             className="input-pass"
             type="password"
             placeholder="Contraseña"
-            {...register("password", { required: "Este campo es obligatorio" })}
+            {...register("user_password", {
+              required: "Este campo es obligatorio",
+            })}
           />
-          {errors.password && <span>{errors.password.message}</span>}
+          {errors.user_password && <span>{errors.user_password.message}</span>}
 
           <a className="forgot-pass" href="#">
             ¿Olvidaste la contraseña?
@@ -91,7 +108,7 @@ export function Login() {
           <button className="login-btn">Iniciar Sesión</button>
           <p className="p-text-login">
             ¿No tienes cuenta?{" "}
-            <a className="text-register" href="register">
+            <a className="text-register" href="/register">
               Regístrate
             </a>
           </p>

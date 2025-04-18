@@ -1,14 +1,3 @@
-.register-container {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
-}
-
-.register-title {
-  color: #ff3a3a;
-  font-size: 2rem;
-}
-
 .p-text-register {
   color: gray;
 }

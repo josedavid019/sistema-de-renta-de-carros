@@ -1,0 +1,30 @@
+.formulario-container {
+  display: flex;
+  justify-content: center;
+}
+.formulario-box {
+  margin: 3rem 0 3rem 0;
+  width: 70%;
+  padding: 1.5rem;
+  border-radius: 1.5rem;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  align-items: center;
+}
+.formulario-title {
+  color: #ff3a3a;
+  font-size: 2rem;
+}
+.formulario-label {
+  font-size: 1.2rem;
+}
+.formulario-div-input {
+  display: flex;
+  flex-direction: column;
+}
+.formulario-div-column {
+  display: flex;
+  justify-content: space-evenly;
+}
+.formulario-subdiv-column {
+}
