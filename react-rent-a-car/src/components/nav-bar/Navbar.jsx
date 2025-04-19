@@ -98,16 +98,10 @@ export function Navbar() {
                 )}
                 {user?.role === "admin" && (
                   <>
-                    <Link
-                      to="/gestion-clientes"
-                      className="navbar-dropdown-item"
-                    >
+                    <Link to="/clientes" className="navbar-dropdown-item">
                       Gestionar Clientes
                     </Link>
-                    <Link
-                      to="/gestion-vehiculos"
-                      className="navbar-dropdown-item"
-                    >
+                    <Link to="/vehiculos" className="navbar-dropdown-item">
                       Gestionar Vehiculos
                     </Link>
                     <Link

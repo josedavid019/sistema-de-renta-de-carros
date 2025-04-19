@@ -58,11 +58,11 @@ function App() {
         {/* Rutas protegidas para el admin */}
         <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
           <Route path="/admin" element={<Admin />} />
-          <Route path="/gestion-clientes" element={<GestionClientes />} />
+          <Route path="/clientes" element={<GestionClientes />} />
           <Route path="/clientes/crear" element={<CrearCliente />} />
           <Route path="/clientes/editar/:id" element={<EditarCliente />} />
           <Route path="/clientes/ver/:id" element={<VerCliente />} />
-          <Route path="/gestion-vehiculos" element={<GestionVehiculos />} />
+          <Route path="/vehiculos" element={<GestionVehiculos />} />
           <Route path="/gestion-empleados" element={<GestionEmpleados />} />
           {/* <NavbarEmployee /> */}
         </Route>

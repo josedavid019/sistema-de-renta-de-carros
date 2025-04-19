@@ -29,7 +29,13 @@ export function VerCliente() {
 
         setCliente(mappedCliente);
       } catch (error) {
-        toast.error("Error al cargar cliente");
+        toast.error("Error al cargar cliente", {
+          position: "bottom-right",
+          style: {
+            background: "#ff3a3a",
+            color: "#fff",
+          },
+        });
         console.error(error);
       }
     }
@@ -39,9 +45,14 @@ export function VerCliente() {
 
   return (
     <div>
-      <h2 className="ver-titulo">Detalles del Cliente</h2>
-      {cliente && <FormularioCliente mode="view" defaultValues={cliente} />}
-      <button onClick={() => navigate(`/gestion-clientes`)}>Volver</button>
+      {cliente && (
+        <FormularioCliente
+          mode="view"
+          defaultValues={cliente}
+          title="Detalles del Cliente"
+        />
+      )}
+      <button onClick={() => navigate("/clientes")}>Volver</button>
     </div>
   );
 }

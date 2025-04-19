@@ -2,7 +2,6 @@ import React from "react";
 import { registerUser } from "../../api/users.api";
 import { toast } from "react-hot-toast";
 import { FormularioCliente } from "../../components/formulario-cliente/FormularioCliente";
-import "./Register.css";
 
 export function Register() {
   const onSubmit = async (data) => {
@@ -16,7 +15,7 @@ export function Register() {
       toast.success("Registro exitoso", {
         position: "bottom-right",
         style: {
-          background: "#ff3a3a",
+          background: "#000",
           color: "#fff",
         },
       });
@@ -27,16 +26,16 @@ export function Register() {
         toast.error("Este nombre de usuario ya está en uso. Elija otro.", {
           position: "bottom-right",
           style: {
-            background: "#fff",
-            color: "#ff3a3a",
+            background: "#ff3a3a",
+            color: "#fff",
           },
         });
       } else {
         toast.error("Error al registrar usuario", {
           position: "bottom-right",
           style: {
-            background: "#fff",
-            color: "#ff3a3a",
+            background: "#ff3a3a",
+            color: "#fff",
           },
         });
       }
@@ -50,6 +49,7 @@ export function Register() {
         mode="create"
         onSubmit={onSubmit}
         title="Registrarse"
+        buttonText="Registrar"
       />
     </div>
   );

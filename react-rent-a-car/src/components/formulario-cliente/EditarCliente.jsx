@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getUser, updateUser, deleteUser } from "../../api/users.api";
+import { getUser, updateUser } from "../../api/users.api";
 import { FormularioCliente } from "../../components/formulario-cliente/FormularioCliente";
 import { toast } from "react-hot-toast";
 
@@ -29,7 +29,13 @@ export function EditarCliente() {
 
         setCliente(mappedCliente);
       } catch (error) {
-        toast.error("Error al cargar cliente");
+        toast.error("Error al cargar cliente", {
+          position: "bottom-right",
+          style: {
+            background: "#ff3a3a",
+            color: "#fff",
+          },
+        });
         console.error(error);
       }
     }
@@ -45,46 +51,38 @@ export function EditarCliente() {
         ...clienteData,
         role: 2,
       });
-      toast.success("Cliente actualizado correctamente");
-      navigate("/gestion-clientes");
+      toast.success("Cliente actualizado correctamente", {
+        position: "bottom-right",
+        style: {
+          background: "#000",
+          color: "#fff",
+        },
+      });
+      navigate("/clientes");
     } catch (error) {
-      console.error(
-        "Detalles del error:",
-        error.response?.data || error.message
-      );
-      toast.error("Error al actualizar cliente");
-    }
-  };
-
-  const handleDelete = async () => {
-    const confirmado = window.confirm(
-      "¿Estás seguro/a de que deseas eliminar este cliente?"
-    );
-    if (!confirmado) return;
-
-    try {
-      await deleteUser(id);
-      toast.success("Cliente eliminado correctamente");
-      navigate("/gestion-clientes");
-    } catch (error) {
-      console.error("Error al eliminar cliente", error);
-      toast.error("Error al eliminar cliente");
+      console.error(error.response?.data || error.message);
+      toast.error("Error al actualizar cliente", {
+        position: "bottom-right",
+        style: {
+          background: "#ff3a3a",
+          color: "#fff",
+        },
+      });
     }
   };
 
   return (
     <div>
-      <h2 className="editar-titulo">Editar Cliente</h2>
       {cliente && (
         <>
           <FormularioCliente
             mode="edit"
             defaultValues={cliente}
             onSubmit={handleUpdate}
+            title="Editar Cliente"
+            buttonText="Editar"
+            userId={id}
           />
-          <button className="btn-eliminar" onClick={handleDelete}>
-            Eliminar Cliente
-          </button>
         </>
       )}
     </div>

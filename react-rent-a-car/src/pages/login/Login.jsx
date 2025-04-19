@@ -18,7 +18,6 @@ export function Login() {
 
   const onSubmit = handleSubmit(async (data) => {
     try {
-      // data ya tiene: { user_username: "...", user_password: "..." }
       const response = await loginUser(data);
 
       if (response.access) {
@@ -29,16 +28,14 @@ export function Login() {
           username: response.username,
           role: response.role,
         });
-
         toast.success("Incio de sesion exitoso", {
           position: "bottom-right",
           style: {
-            background: "#ff3a3a",
+            background: "#000",
             color: "#fff",
           },
         });
 
-        // Redirección según rol
         switch (response.role) {
           case "admin":
             navigate("/admin");
@@ -60,8 +57,8 @@ export function Login() {
         toast.error("Error al iniciar sesión", {
           position: "bottom-right",
           style: {
-            background: "#fff",
-            color: "#ff3a3a",
+            background: "#ff3a3a",
+            color: "#fff",
           },
         });
       }
@@ -69,8 +66,8 @@ export function Login() {
       toast.error("Error al iniciar sesión", {
         position: "bottom-right",
         style: {
-          background: "#fff",
-          color: "#ff3a3a",
+          background: "#ff3a3a",
+          color: "#fff",
         },
       });
       console.error(error.response?.data || error.message);

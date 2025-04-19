@@ -11,17 +11,28 @@ export function CrearCliente() {
 
     const finalData = {
       ...clienteData,
-      role: 2, // Cliente
+      role: 2,
     };
 
     await registerUser(finalData);
-    navigate("/gestion-clientes");
+    toast.success("Cliente creado correctamente", {
+      position: "bottom-right",
+      style: {
+        background: "#000",
+        color: "#fff",
+      },
+    });
+    navigate("/clientes");
   };
 
   return (
     <div className="crear-cliente-page">
-      <h1>Crear Cliente</h1>
-      <FormularioCliente mode="create" onSubmit={handleCrearCliente} />
+      <FormularioCliente
+        mode="create"
+        onSubmit={handleCrearCliente}
+        title="Crear Cliente"
+        buttonText="Crear"
+      />
     </div>
   );
 }

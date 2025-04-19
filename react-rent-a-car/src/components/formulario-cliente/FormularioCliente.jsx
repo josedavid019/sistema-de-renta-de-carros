@@ -1,4 +1,6 @@
 import React, { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { deleteUser } from "../../api/users.api";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 import "./FormularioCliente.css";
@@ -8,7 +10,12 @@ export function FormularioCliente({
   defaultValues = {},
   onSubmit,
   title = "",
+  buttonText = "",
+  userId,
 }) {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleVolver = () => navigate("/clientes");
   const {
     register,
     handleSubmit,
@@ -27,9 +34,11 @@ export function FormularioCliente({
     }
   }, [defaultValues, mode, setValue]);
 
+  const isRegisterPage = location.pathname === "/register";
   const isViewMode = mode === "view";
 
   const handleInternalSubmit = handleSubmit(async (data) => {
+    if (!onSubmit) return;
     try {
       const { confirmPassword, ...cleanData } = data;
       await onSubmit(cleanData);
@@ -45,6 +54,22 @@ export function FormularioCliente({
     }
   });
 
+  const handleDelete = async () => {
+    const confirmado = window.confirm(
+      "¿Estás seguro/a de que deseas eliminar este cliente?"
+    );
+    if (!confirmado) return;
+
+    try {
+      await deleteUser(userId);
+      toast.success("Cliente eliminado correctamente");
+      navigate("/clientes");
+    } catch (error) {
+      console.error("Error al eliminar cliente", error);
+      toast.error("Error al eliminar cliente");
+    }
+  };
+
   return (
     <form onSubmit={handleInternalSubmit}>
       <div className="formulario-container">
@@ -57,7 +82,7 @@ export function FormularioCliente({
               </label>
               <input
                 id="form-username"
-                className="input-user-formulario"
+                className="formulario-input"
                 type="text"
                 placeholder="Usuario"
                 {...register("user_username", { required: true })}
@@ -75,6 +100,7 @@ export function FormularioCliente({
                   </label>
                   <input
                     id="form-password"
+                    className="formulario-input"
                     type="password"
                     placeholder="Contraseña"
                     {...register("user_password", { required: true })}
@@ -94,6 +120,7 @@ export function FormularioCliente({
                   </label>
                   <input
                     id="form-confirm-password"
+                    className="formulario-input"
                     type="password"
                     placeholder="Confirmar Contraseña"
                     {...register("confirmPassword", {
@@ -252,18 +279,38 @@ export function FormularioCliente({
           </div>
           <div>
             {!isViewMode && (
-              <button className="formulario-btn" type="submit">
-                {mode === "edit" ? "Guardar Cambios" : "Registrar"}
+              <button className="formulario-button" type="submit">
+                {buttonText}
+              </button>
+            )}
+            {(mode === "edit" || mode === "create" || mode === "view") && (
+              <button
+                className="formulario-button-volver"
+                type="button"
+                onClick={handleVolver}
+              >
+                Volver
+              </button>
+            )}
+            {mode === "edit" && (
+              <button
+                className="formulario-button-eliminar"
+                type="button"
+                onClick={handleDelete}
+              >
+                Eliminar
               </button>
             )}
           </div>
           <div>
-            <p className="p-text-register">
-              ¿Ya tienes cuenta?{" "}
-              <a className="text-login" href="/login">
-                Iniciar sesión
-              </a>
-            </p>
+            {isRegisterPage && (
+              <p className="formulario-ptext">
+                ¿Ya tienes cuenta?{" "}
+                <a className="formulario-atext" href="/login">
+                  Iniciar sesión
+                </a>
+              </p>
+            )}
           </div>
         </div>
       </div>
