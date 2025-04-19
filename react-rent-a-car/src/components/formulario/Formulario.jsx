@@ -3,19 +3,20 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { deleteUser } from "../../api/users.api";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
-import "./FormularioCliente.css";
+import "./Formulario.css";
 
-export function FormularioCliente({
+export function Formulario({
   mode = "create",
   defaultValues = {},
   onSubmit,
   title = "",
   buttonText = "",
   userId,
+  esEmpleado = false,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const handleVolver = () => navigate("/clientes");
+  const handleVolver = () => navigate(esEmpleado ? "/empleados" : "/clientes");
   const {
     register,
     handleSubmit,
@@ -63,7 +64,11 @@ export function FormularioCliente({
     try {
       await deleteUser(userId);
       toast.success("Cliente eliminado correctamente");
-      navigate("/clientes");
+      if (esEmpleado) {
+        navigate("/empleados");
+      } else {
+        navigate("/clientes");
+      }
     } catch (error) {
       console.error("Error al eliminar cliente", error);
       toast.error("Error al eliminar cliente");
@@ -275,6 +280,32 @@ export function FormularioCliente({
                   </span>
                 )}
               </div>
+            </div>
+          </div>
+          <div>
+            <div className="formulario-div-input">
+              {esEmpleado && (
+                <>
+                  <label htmlFor="form-role" className="formulario-label">
+                    Role:
+                  </label>
+                  <select
+                    id="form-role"
+                    className="formulario-input"
+                    {...register("role", { required: true })}
+                    disabled={isViewMode}
+                  >
+                    <option value="">Seleccionar</option>
+                    <option value="1">Admin</option>
+                    <option value="3">Recepcionista</option>
+                    <option value="4">Personal de entrega</option>
+                    <option value="5">Personal de recepción</option>
+                  </select>
+                  {errors.role && (
+                    <span className="formulario-error">Role es requerido</span>
+                  )}
+                </>
+              )}
             </div>
           </div>
           <div>

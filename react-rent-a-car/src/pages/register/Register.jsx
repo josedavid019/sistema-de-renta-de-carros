@@ -1,7 +1,7 @@
 import React from "react";
 import { registerUser } from "../../api/users.api";
 import { toast } from "react-hot-toast";
-import { FormularioCliente } from "../../components/formulario-cliente/FormularioCliente";
+import { Formulario } from "../../components/formulario/Formulario";
 
 export function Register() {
   const onSubmit = async (data) => {
@@ -45,7 +45,7 @@ export function Register() {
 
   return (
     <div className="register-container">
-      <FormularioCliente
+      <Formulario
         mode="create"
         onSubmit={onSubmit}
         title="Registrarse"

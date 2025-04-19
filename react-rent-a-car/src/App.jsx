@@ -19,11 +19,14 @@ import { Receptionist } from "./pages/employees/receptionist";
 import { Informes } from "./pages/informes/Informes";
 import { HistorialReservas } from "./pages/historial-reservas/HistorialReservas";
 import { GestionClientes } from "./pages/gestion-clientes/GestionClientes";
-import { CrearCliente } from "./components/formulario-cliente/CrearCliente";
-import { EditarCliente } from "./components/formulario-cliente/EditarCliente";
-import { VerCliente } from "./components/formulario-cliente/VerCliente";
+import { CrearCliente } from "./pages/gestion-clientes/CrearCliente";
+import { EditarCliente } from "./pages/gestion-clientes/EditarCliente";
+import { VerCliente } from "./pages/gestion-clientes/VerCliente";
 import { GestionVehiculos } from "./pages/gestion-vehiculos/GestionVehiculos";
 import { GestionEmpleados } from "./pages/gestion-empleados/GestionEmpleados";
+import { CrearEmpleado } from "./pages/gestion-empleados/CrearEmpleado";
+import { EditarEmpleado } from "./pages/gestion-empleados/EditarEmpleado";
+import { VerEmpleado } from "./pages/gestion-empleados/VerEmpleado";
 import { CarrosPorCategoria } from "./pages/catalogo_carros/CarrosPorCategoria";
 
 function App() {
@@ -63,7 +66,10 @@ function App() {
           <Route path="/clientes/editar/:id" element={<EditarCliente />} />
           <Route path="/clientes/ver/:id" element={<VerCliente />} />
           <Route path="/vehiculos" element={<GestionVehiculos />} />
-          <Route path="/gestion-empleados" element={<GestionEmpleados />} />
+          <Route path="/empleados" element={<GestionEmpleados />} />
+          <Route path="/empleados/crear" element={<CrearEmpleado />} />
+          <Route path="/empleados/editar/:id" element={<EditarEmpleado />} />
+          <Route path="/empleados/ver/:id" element={<VerEmpleado />} />
           {/* <NavbarEmployee /> */}
         </Route>
         {/* Rutas protegidas para el recepcionista y admin */}

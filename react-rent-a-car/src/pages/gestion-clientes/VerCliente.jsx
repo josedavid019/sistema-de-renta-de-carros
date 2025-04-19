@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getUser, updateUser } from "../../api/users.api";
-import { FormularioCliente } from "../../components/formulario-cliente/FormularioCliente";
+import { getUser } from "../../api/users.api";
+import { Formulario } from "../../components/formulario/Formulario";
 import { toast } from "react-hot-toast";
 
-export function EditarCliente() {
+export function VerCliente() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [cliente, setCliente] = useState(null);
@@ -43,47 +43,14 @@ export function EditarCliente() {
     fetchCliente();
   }, [id]);
 
-  const handleUpdate = async (data) => {
-    const { confirmPassword, ...clienteData } = data;
-
-    try {
-      await updateUser(id, {
-        ...clienteData,
-        role: 2,
-      });
-      toast.success("Cliente actualizado correctamente", {
-        position: "bottom-right",
-        style: {
-          background: "#000",
-          color: "#fff",
-        },
-      });
-      navigate("/clientes");
-    } catch (error) {
-      console.error(error.response?.data || error.message);
-      toast.error("Error al actualizar cliente", {
-        position: "bottom-right",
-        style: {
-          background: "#ff3a3a",
-          color: "#fff",
-        },
-      });
-    }
-  };
-
   return (
     <div>
       {cliente && (
-        <>
-          <FormularioCliente
-            mode="edit"
-            defaultValues={cliente}
-            onSubmit={handleUpdate}
-            title="Editar Cliente"
-            buttonText="Editar"
-            userId={id}
-          />
-        </>
+        <Formulario
+          mode="view"
+          defaultValues={cliente}
+          title="Detalles del Cliente"
+        />
       )}
     </div>
   );

@@ -169,22 +169,18 @@ export function GestionClientes() {
             onChange={(e) => setSearchTexto(e.target.value)}
           />
         </div>
-
         <label htmlFor="select-cantidad">Cantidad de registros:</label>
         <select
           id="select-cantidad"
           value={cantidadRegistros}
           onChange={(e) => setCantidadRegistros(parseInt(e.target.value))}
         >
-          <option value={0}>0</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={30}>30</option>
-          <option value={40}>40</option>
-          <option value={50}>50</option>
-          <option value={100}>100</option>
+          {[0, 10, 20, 30, 40, 50, 100].map((n) => (
+            <option key={n} value={n}>
+              {n}
+            </option>
+          ))}
         </select>
-
         <button className="gtclientes-btn-crear" onClick={handleCrearCliente}>
           Crear Cliente
         </button>

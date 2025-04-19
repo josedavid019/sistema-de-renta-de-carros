@@ -1,7 +1,8 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FormularioCliente } from "../../components/formulario-cliente/FormularioCliente";
+import { Formulario } from "../../components/formulario/Formulario";
 import { registerUser } from "../../api/users.api";
+import { toast } from "react-hot-toast";
 
 export function CrearCliente() {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ export function CrearCliente() {
 
   return (
     <div className="crear-cliente-page">
-      <FormularioCliente
+      <Formulario
         mode="create"
         onSubmit={handleCrearCliente}
         title="Crear Cliente"

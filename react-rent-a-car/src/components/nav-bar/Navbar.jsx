@@ -104,10 +104,7 @@ export function Navbar() {
                     <Link to="/vehiculos" className="navbar-dropdown-item">
                       Gestionar Vehiculos
                     </Link>
-                    <Link
-                      to="/gestion-empleados"
-                      className="navbar-dropdown-item"
-                    >
+                    <Link to="/empleados" className="navbar-dropdown-item">
                       Gestionar Empleados
                     </Link>
                   </>
