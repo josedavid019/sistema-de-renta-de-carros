@@ -23,6 +23,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('rents/', include('rents.urls')),
     path('report/', include('report.urls')),
+    path('catalog/', include('catalog.urls')),
 
 
     # DOCUMENTATION API
