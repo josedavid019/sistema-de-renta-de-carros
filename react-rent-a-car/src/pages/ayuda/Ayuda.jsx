@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import { createReporte } from "../../api/reports.api";
 import "./Ayuda.css";
-import { createReporte } from "../../api/report";
 
 export function Ayuda() {
   const [email, setEmail] = useState("");
@@ -15,13 +15,12 @@ export function Ayuda() {
     setLoading(true);
     setError("");
 
-  const reporte = {
-    correo_usuario: email,
-    descripcion: descripcion,
-  };
+    const reporte = {
+      correo_usuario: email,
+      descripcion: descripcion,
+    };
 
-   try {
-
+    try {
       console.log("Enviando el siguiente reporte:", reporte);
       await createReporte(reporte);
       setSubmitted(true);
@@ -32,7 +31,6 @@ export function Ayuda() {
       setLoading(false);
     }
   };
-
 
   return (
     <div className="ayuda-container">
@@ -61,7 +59,6 @@ export function Ayuda() {
           <button type="submit" disabled={loading}>
             {loading ? "Enviando..." : "Enviar"}
           </button>
-
         </form>
       ) : (
         <div className="ayuda-confirmation">

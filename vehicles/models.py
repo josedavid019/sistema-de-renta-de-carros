@@ -19,7 +19,7 @@ class VehicleStatus(models.Model):
 class Vehicles(models.Model):
     vehicle_id = models.AutoField(primary_key=True)
     vehicle_name = models.CharField(max_length=100)
-    vehicle_image = models.ImageField(upload_to='vehicles/')
+    vehicle_image = models.JSONField()
     category = models.ForeignKey(VehicleCategory, on_delete=models.CASCADE)
     status = models.ForeignKey(VehicleStatus, on_delete=models.CASCADE)
 

@@ -60,6 +60,8 @@ def login_user(request):
                 'access': str(refresh.access_token),
                 'user_id': user.user_id,
                 'username': user.user_username,
+                'firstname': user.user_firstname,
+                'lastname': user.user_lastname,
                 'role': user.role.role_name if user.role else None
             })
         else:

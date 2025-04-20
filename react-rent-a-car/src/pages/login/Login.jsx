@@ -26,6 +26,8 @@ export function Login() {
         login({
           id: response.user_id,
           username: response.username,
+          firstname: response.firstname,
+          lastname: response.lastname,
           role: response.role,
         });
         toast.success("Incio de sesion exitoso", {
