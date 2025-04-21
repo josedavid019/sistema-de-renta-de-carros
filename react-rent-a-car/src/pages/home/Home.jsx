@@ -18,7 +18,6 @@ export function Home() {
   } = useForm();
 
   const onSubmit = handleSubmit(async (data) => {
-    console.log(data);
     await createReserva(data);
     toast.success("", {
       position: "bottom-right",
@@ -26,6 +25,7 @@ export function Home() {
         background: "#ff3a3a",
       },
     });
+    navigate("/reservar", { state: { data } });
   });
 
   const fecha_recogida = watch("fecha_recogida");
@@ -244,7 +244,7 @@ export function Home() {
             </div>
           </div>
           <div>
-            <button className="btn-reservar" onClick={handleReservar}>
+            <button className="btn-reservar" type="submit">
               Reservar
             </button>
           </div>

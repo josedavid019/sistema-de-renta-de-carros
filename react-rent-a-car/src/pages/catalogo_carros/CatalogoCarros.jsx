@@ -1,31 +1,55 @@
-import React from "react";
-import "./CatalogoCarros.css";
-import { VehicleCard } from "../../components/vehicle-card/VehicleCard";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { CategoryCard } from "../../components/cards/CategoryCard";
+import { getAllCategories, getAllVehicles } from "../../api/vehicles.api";
 
 export function CatalogoCarros() {
+  const [categorias, setCategorias] = useState([]);
+  const [vehiculos, setVehiculos] = useState([]);
+  const navigate = useNavigate();
 
-  const vehicles = [
-    { id: 1, image: "/ruta/de/imagen1.jpg", name: "Carro A", type: "Sedan" },
-    { id: 2, image: "/ruta/de/imagen2.jpg", name: "Carro B", type: "Sedan" },
-    { id: 3, image: "/ruta/de/imagen3.jpg", name: "Carro C", type: "Sedan" },
-    { id: 4, image: "/ruta/de/imagen4.jpg", name: "Carro D", type: "Sedan" },
-    { id: 5, image: "/ruta/de/imagen5.jpg", name: "Carro E", type: "Sedan" },
-    { id: 6, image: "/ruta/de/imagen6.jpg", name: "Carro F", type: "Sedan" },
-  ];
+  useEffect(() => {
+    const fetchDatos = async () => {
+      try {
+        const [resCats, resVehs] = await Promise.all([
+          getAllCategories(),
+          getAllVehicles(),
+        ]);
+
+        // 1) Filtrar sólo vehículos con status_id === 1
+        const disponibles = resVehs.data.filter(
+          (v) => v.status?.status_id === 1
+        );
+
+        setVehiculos(disponibles);
+
+        // 2) Mostrar sólo categorías que tengan al menos un vehículo disponible
+        const catsConVehs = resCats.data.filter((cat) =>
+          disponibles.some((v) => v.category?.category_id === cat.category_id)
+        );
+
+        setCategorias(catsConVehs);
+      } catch (err) {
+        console.error("Error cargando catálogo:", err);
+      }
+    };
+
+    fetchDatos();
+  }, []);
+
+  const handleClick = (catId) => navigate(`/catalogo/${catId}`);
 
   return (
-    <div className="catalogo-container">
-      <h1 className="catalogo-title">Catálogo de Carros</h1>
-      <div className="vehicles-container">
-        {vehicles.map((vehicle) => (
-          <VehicleCard
-            key={vehicle.id}
-            image={vehicle.image}
-            name={vehicle.name}
-            type={vehicle.type}
-          />
-        ))}
-      </div>
+    <div>
+      {categorias.map((cat) => (
+        <CategoryCard
+          key={cat.category_id}
+          category_image={cat.category_image || "/img/default.jpg"}
+          category_name={cat.category_name}
+          category_description={cat.category_description}
+          onClick={() => handleClick(cat.category_id)}
+        />
+      ))}
     </div>
   );
-};
+}
