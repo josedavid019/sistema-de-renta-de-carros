@@ -111,11 +111,8 @@ export function Navbar() {
                 <div className="navbar-dropdown-menu">
                   {user?.role === "cliente" && (
                     <>
-                      <Link to="/catalogo" className="navbar-dropdown-item">
-                        Catálogo Carros
-                      </Link>
-                      <Link to="/mis-reservas" className="navbar-dropdown-item">
-                        Mis Reservas
+                      <Link to="/cliente" className="navbar-dropdown-item">
+                        Mi Perfil
                       </Link>
                     </>
                   )}

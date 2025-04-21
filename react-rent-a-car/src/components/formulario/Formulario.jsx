@@ -16,7 +16,15 @@ export function Formulario({
 }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const handleVolver = () => navigate(esEmpleado ? "/empleados" : "/clientes");
+  const handleVolver = () => {
+    if (location.pathname === "/register") {
+      navigate("/home");
+    } else if (esEmpleado) {
+      navigate("/empleados");
+    } else {
+      navigate("/clientes");
+    }
+  };
   const {
     register,
     handleSubmit,
@@ -42,7 +50,22 @@ export function Formulario({
     if (!onSubmit) return;
     try {
       const { confirmPassword, ...cleanData } = data;
-      await onSubmit(cleanData);
+      const transformedData = {
+        ...cleanData,
+        user_username: cleanData.user_username?.trim(),
+        user_firstname: cleanData.user_firstname?.toLowerCase().trim(),
+        user_lastname: cleanData.user_lastname?.toLowerCase().trim(),
+        user_secondname: cleanData.user_secondname?.toLowerCase().trim(),
+        user_second_lastname: cleanData.user_second_lastname
+          ?.toLowerCase()
+          .trim(),
+        user_cedula: cleanData.user_cedula?.trim(),
+        user_email: cleanData.user_email?.toLowerCase().trim(),
+        user_phone: cleanData.user_phone?.trim(),
+        user_address: cleanData.user_address?.trim(),
+      };
+
+      await onSubmit(transformedData);
     } catch (error) {
       console.error(error.response?.data || error.message);
       toast.error("Error al procesar el formulario", {
@@ -200,6 +223,22 @@ export function Formulario({
                 )}
               </div>
               <div className="formulario-div-input">
+                <label htmlFor="form-cedula" className="formulario-label">
+                  Cédula:
+                </label>
+                <input
+                  id="form-cedula"
+                  className="formulario-input"
+                  type="text"
+                  placeholder="Cédula"
+                  {...register("user_cedula", { required: true })}
+                  disabled={isViewMode}
+                />
+                {errors.user_cedula && (
+                  <span className="formulario-error">Cédula es requerida</span>
+                )}
+              </div>
+              <div className="formulario-div-input">
                 <label htmlFor="form-email" className="formulario-label">
                   Email:
                 </label>
@@ -247,19 +286,21 @@ export function Formulario({
                 />
               </div>
               <div className="formulario-div-input">
-                <label htmlFor="form-cedula" className="formulario-label">
-                  Cédula:
+                <label htmlFor="form-genre" className="formulario-label">
+                  Genero:
                 </label>
-                <input
-                  id="form-cedula"
+                <select
+                  id="form-genre"
                   className="formulario-input"
-                  type="text"
-                  placeholder="Cédula"
-                  {...register("user_cedula", { required: true })}
+                  {...register("user_genre", { required: true })}
                   disabled={isViewMode}
-                />
-                {errors.user_cedula && (
-                  <span className="formulario-error">Cédula es requerida</span>
+                >
+                  <option value="">Seleccionar</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="femenino">Femenino</option>
+                </select>
+                {errors.user_genre && (
+                  <span className="formulario-error">Genero es requerido</span>
                 )}
               </div>
               <div className="formulario-div-input">
@@ -277,6 +318,24 @@ export function Formulario({
                 {errors.user_phone && (
                   <span className="formulario-error">
                     Teléfono es requerido
+                  </span>
+                )}
+              </div>
+              <div className="formulario-div-input">
+                <label htmlFor="form-address" className="formulario-label">
+                  Dirección:
+                </label>
+                <input
+                  id="form-address"
+                  className="formulario-input"
+                  type="text"
+                  placeholder="Dirección"
+                  {...register("user_address", { required: true })}
+                  disabled={isViewMode}
+                />
+                {errors.user_address && (
+                  <span className="formulario-error">
+                    Dirección es requerida
                   </span>
                 )}
               </div>

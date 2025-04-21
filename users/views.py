@@ -31,10 +31,12 @@ def register_user(request):
             user_secondname=data.get('user_secondname', ''),
             user_lastname=data.get('user_lastname', ''),
             user_second_lastname=data.get('user_second_lastname', ''),
+            user_genre=data.get('user_genre', ''),
             user_dateofbirth=data.get('user_dateofbirth'),
             user_cedula=data.get('user_cedula'),
             user_email=data.get('user_email'),
             user_phone=data.get('user_phone', ''),
+            user_address=data.get('user_address', ''),
             role=role
         )
         user.save()
@@ -62,6 +64,7 @@ def login_user(request):
                 'username': user.user_username,
                 'firstname': user.user_firstname,
                 'lastname': user.user_lastname,
+                'genre': user.user_genre,
                 'role': user.role.role_name if user.role else None
             })
         else:

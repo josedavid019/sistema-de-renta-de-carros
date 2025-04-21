@@ -1,8 +1,12 @@
-from django.urls import path
-from .views import VehicleCategoryView, VehicleStatusView, VehiclesView
+from django.urls import path, include
+from rest_framework import routers
+from vehicles import views
+
+router = routers.DefaultRouter()
+router.register(r'vehicles', views.VehicleView, 'vehicles')
 
 urlpatterns = [
-    path('categories/', VehicleCategoryView.as_view(), name='vehicle-categories'),
-    path('statuses/', VehicleStatusView.as_view(), name='vehicle-statuses'),
-    path('vehicles/', VehiclesView.as_view(), name='vehicles'),
+    path('api/', include(router.urls)),
+    path('api/categories/', views.VehicleCategoryView.as_view()),
+    path('api/statuses/', views.VehicleStatusView.as_view()),
 ]
