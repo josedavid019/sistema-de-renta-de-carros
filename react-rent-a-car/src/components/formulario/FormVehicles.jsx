@@ -79,8 +79,8 @@ export function FormVehicles({
   return (
     <form onSubmit={handleInternalSubmit}>
       <div>
-        <div>
-          <h1>{title}</h1>
+        <div className="formvehicles-div-title">
+          <h1 className="formvehicles-title">{title}</h1>
         </div>
         <div className="formvehicles-column">
           <div>
@@ -384,7 +384,7 @@ export function FormVehicles({
             </div>
           </div>
         </div>
-        <div>
+        <div className="formvehicles-div-buttons">
           {(mode === "create" || mode === "edit") && (
             <button>{buttonText}</button>
           )}

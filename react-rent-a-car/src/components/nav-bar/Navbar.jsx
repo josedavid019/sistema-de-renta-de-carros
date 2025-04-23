@@ -46,12 +46,8 @@ export function Navbar() {
   return (
     <nav className="navbar-container">
       <div className="navbar-div-logo">
-        <Link to="/home">
-          <img
-            src="/Logo empresa.png"
-            alt="Logo de la empresa"
-            className="navbar-logo"
-          />
+        <Link to="/home" style={{ textDecoration: "none" }}>
+          <h1 className="navbar-logo">Rent a Car</h1>
         </Link>
       </div>
 
@@ -61,11 +57,6 @@ export function Navbar() {
             <Link to="/catalogo" className="navbar-right-item">
               Catálogo Carros
             </Link>
-            {location.pathname !== "/mis-reservas" && (
-              <Link to="/mis-reservas" className="navbar-right-item">
-                Mis Reservas
-              </Link>
-            )}
             <div className="navbar-login">
               {location.pathname !== "/login" && (
                 <Link to="/login" className="navbar-right-item">
@@ -89,11 +80,6 @@ export function Navbar() {
             {location.pathname !== "/catalogo" && (
               <Link to="/catalogo" className="navbar-right-item">
                 Catálogo Carros
-              </Link>
-            )}
-            {location.pathname !== "/mis-reservas" && (
-              <Link to="/mis-reservas" className="navbar-right-item">
-                Mis Reservas
               </Link>
             )}
             <div className="navbar-menu-container" ref={menuRef}>

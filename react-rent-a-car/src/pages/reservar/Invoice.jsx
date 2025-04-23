@@ -4,6 +4,7 @@ import html2canvas from "html2canvas";
 import { useReserva } from "../../context/ReservaContext";
 import { getAllInvoices } from "../../api/payments.api";
 import { useNavigate } from "react-router-dom";
+import "./Invoice.css";
 
 export function Invoice() {
   const [factura, setFactura] = useState(null);
@@ -63,54 +64,66 @@ export function Invoice() {
 
   return (
     <div className="invoice-container">
-      <div ref={facturaRef} style={{ padding: "20px", background: "#fff" }}>
-        <h2>Factura</h2>
-        <p>
+      <div ref={facturaRef} className="invoice-content">
+        <h2 className="invoice-title">Factura</h2>
+        <p className="invoice-detail">
           <strong>Número de Factura:</strong> {factura.invoice_number}
         </p>
-        <p>
+        <p className="invoice-detail">
           <strong>Fecha:</strong> {factura.invoice_date}
         </p>
-        <p>
+        <p className="invoice-detail">
           <strong>Estado:</strong> {factura.invoice_status}
         </p>
-        <p>
+        <p className="invoice-detail">
           <strong>Total:</strong> ${factura.invoice_total}
         </p>
-        <p>
+        <p className="invoice-detail">
           <strong>Notas:</strong> {factura.invoice_notes || "Sin notas"}
         </p>
 
-        <hr />
+        <hr className="invoice-divider" />
 
-        <h3>Cliente</h3>
-        <p>
+        <h3 className="invoice-subtitle">Cliente</h3>
+        <p className="invoice-detail">
           {reserva.reservation_firstname} {reserva.reservation_lastname}
         </p>
-        <p>Cédula: {reserva.reservation_cedula}</p>
-        <p>Email: {reserva.reservation_email}</p>
-        <p>Teléfono: {reserva.reservation_phone}</p>
+        <p className="invoice-detail">Cédula: {reserva.reservation_cedula}</p>
+        <p className="invoice-detail">Email: {reserva.reservation_email}</p>
+        <p className="invoice-detail">Teléfono: {reserva.reservation_phone}</p>
 
-        <h3>Vehículo</h3>
-        <p>
+        <h3 className="invoice-subtitle">Vehículo</h3>
+        <p className="invoice-detail">
           {reserva.vehicle?.vehicle_brand} {reserva.vehicle?.vehicle_model} -{" "}
           {reserva.vehicle?.vehicle_year}
         </p>
-        <p>Placa: {reserva.vehicle?.vehicle_license_plate}</p>
+        <p className="invoice-detail">
+          Placa: {reserva.vehicle?.vehicle_license_plate}
+        </p>
 
-        <h3>Reserva</h3>
-        <p>
+        <h3 className="invoice-subtitle">Reserva</h3>
+        <p className="invoice-detail">
           Recogida: {reserva.pickup_date} a las {reserva.pickup_time}
         </p>
-        <p>
+        <p className="invoice-detail">
           Devolución: {reserva.dropoff_date} a las {reserva.dropoff_time}
         </p>
-        <p>Lugar de Recogida: {reserva.pickup_location}</p>
-        <p>Lugar de Devolución: {reserva.dropoff_location}</p>
+        <p className="invoice-detail">
+          Lugar de Recogida: {reserva.pickup_location}
+        </p>
+        <p className="invoice-detail">
+          Lugar de Devolución: {reserva.dropoff_location}
+        </p>
       </div>
 
-      <button onClick={descargarPDF}>Descargar PDF</button>
-      <button onClick={() => navigate("/home")}>Volver</button>
+      <div className="invoice-actions">
+        <button className="invoice-button" onClick={descargarPDF}>
+          Descargar PDF
+        </button>
+        <button className="invoice-button" onClick={() => navigate("/home")}>
+          Volver
+        </button>
+      </div>
     </div>
   );
 }

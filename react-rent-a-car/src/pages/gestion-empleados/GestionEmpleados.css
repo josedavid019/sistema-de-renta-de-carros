@@ -1,134 +1,181 @@
-/* GestionEmpleados.css */
-
-/* Este contenedor ahora muestra el titulo arriba, y debajo su contenido */
-.gestion-empleados-container {
-  padding: 2rem;
-  /* Ya NO forzamos display flex aqui, para permitir que el <h1> quede arriba */
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* pequeña separacion entre h1 y el contenido */
+/* Contenedor principal de la gestión de empleados */
+.gtempleados-container {
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Contenedor para formulario a la izq y lista a la der */
-.gestion-empleados-content {
-  display: flex;
-  gap: 2rem;
+.gtempleados-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
-/* Seccion izquierda (formulario) */
-.form-empleados {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  max-width: 300px;
-  gap: 0.5rem;
-  background-color: #f7f7f7;
-  padding: 1rem;
-  border-radius: 6px;
+/* Filtros de búsqueda */
+.gtempleados-filtros {
+  /* display: flex; */
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 
-.form-empleados label {
-  font-weight: bold;
+.gtempleados-filtros-column {
+  /* flex: 1; */
+  min-width: 200px;
 }
 
-.form-empleados input,
-.form-empleados select {
-  padding: 0.3rem;
-  margin-bottom: 0.5rem;
+.gtempleados-label {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-top: 20px;
+  color: #333;
 }
 
-.btn-enviar {
-  background-color: #ff3a3a;
-  color: #fff;
+.gtempleados-checkboxes {
+  margin-top: 10px;
+}
+
+.gtempleados-checkbox-label {
+  /* display: block; */
+  /* margin-bottom: 30px; */
+  color: #555;
+}
+
+.gtempleados-select,
+.gtempleados-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.gtempleados-btn-create {
+  background-color: #007bff;
+  color: white;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
-  padding: 0.5rem;
-  font-weight: bold;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
+  width: 100%;
 }
 
-.btn-enviar:hover {
-  background-color: #d32f2f;
+.gtempleados-btn-create:hover {
+  background-color: #0056b3;
 }
 
-/* Seccion derecha (lista de empleados) */
-.lista-empleados {
-  flex: 1;
-  background-color: #ffffff;
-  border-radius: 6px;
-  padding: 1rem;
+/* Estilo de la tabla */
+.gtempleados-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
 }
 
-.empleado-item {
+.gtempleados-table th,
+.gtempleados-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.gtempleados-table th {
+  background-color: #f8f9fa;
+  font-size: 1.1rem;
+  color: #333;
+  font-weight: bold;
+}
+
+.gtempleados-table td {
+  color: #555;
+  font-size: 1rem;
+}
+
+.gtempleados-actions {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 0.8rem;
-  background-color: #f2f2f2;
-  padding: 0.5rem;
-  border-radius: 4px;
+  gap: 10px;
 }
 
-.icono-lapiz {
-  cursor: pointer;
-  font-size: 1.2rem;
-}
-
-/* Modal edición */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 999;
-}
-
-.modal-content {
-  background-color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  min-width: 300px;
-}
-
-.modal-content label {
-  display: block;
-  font-weight: bold;
-  margin-top: 0.5rem;
-}
-
-.modal-content input,
-.modal-content select {
-  width: 100%;
-  margin-bottom: 0.5rem;
-  padding: 0.3rem;
-}
-
-.modal-buttons {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.modal-buttons button {
-  flex: 1;
-  padding: 0.5rem;
+.gtempleados-btn-ver,
+.gtempleados-btn-edit {
+  padding: 8px 15px;
   border: none;
-  border-radius: 6px;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: bold;
+  font-size: 0.9rem;
+  text-align: center;
+  width: auto;
 }
 
-.modal-buttons button:first-child {
-  background-color: #4caf50;
-  color: #fff;
+.gtempleados-btn-ver {
+  background-color: #28a745;
+  color: white;
 }
 
-.modal-buttons button:last-child {
-  background-color: #aaa;
-  color: #fff;
+.gtempleados-btn-ver:hover {
+  background-color: #218838;
+}
+
+.gtempleados-btn-edit {
+  background-color: #ffc107;
+  color: white;
+}
+
+.gtempleados-btn-edit:hover {
+  background-color: #e0a800;
+}
+
+/* Input de búsqueda */
+.gtempleados-input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.gtempleados-input[type="date"] {
+  padding: 6px;
+}
+
+/* Estilos generales para select y buttons */
+.gtempleados-select {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.gtempleados-select:focus,
+.gtempleados-input:focus {
+  border-color: #007bff;
+}
+
+/* Estilo para la columna de filtros */
+.gtempleados-busqueda {
+  /* flex: 2; */
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Responsive - Ajuste en pantallas más pequeñas */
+@media (max-width: 768px) {
+  .gtempleados-filtros {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .gtempleados-btn-create {
+    width: auto;
+    margin-top: 20px;
+  }
+
+  .gtempleados-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
 }

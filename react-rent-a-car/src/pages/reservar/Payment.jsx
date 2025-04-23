@@ -3,6 +3,7 @@ import { useReserva } from "../../context/ReservaContext";
 import { useNavigate } from "react-router-dom";
 import { createReserva } from "../../api/reservations.api";
 import { createPayment, createInvoice } from "../../api/payments.api";
+import "./Payment.css";
 
 export function Payment() {
   const { reserva, setReserva } = useReserva();
@@ -115,53 +116,81 @@ export function Payment() {
 
   return (
     <div className="payment-container">
-      <h2>Resumen de la Reserva</h2>
+      <h2 className="payment-title">Resumen de la Reserva</h2>
 
-      <div>
-        <div>
-          <h3>Datos:</h3>
-          <p>
+      <div className="payment-details">
+        <div className="payment-section">
+          <h3 className="payment-subtitle">Datos:</h3>
+          <p className="payment-text">
             Nombre: {reserva.reservation_firstname}{" "}
             {reserva.reservation_lastname}
           </p>
-          <p>Cedula: {reserva.reservation_cedula}</p>
-          <p>Email: {reserva.reservation_email}</p>
-          <p>Teléfono: {reserva.reservation_phone}</p>
-          <p>Dirección: {reserva.reservation_address}</p>
-          <p>Numero de Licencia: {reserva.license_number}</p>
-          <p>Pais de Emisión: {reserva.license_country}</p>
+          <p className="payment-text">Cédula: {reserva.reservation_cedula}</p>
+          <p className="payment-text">Email: {reserva.reservation_email}</p>
+          <p className="payment-text">Teléfono: {reserva.reservation_phone}</p>
+          <p className="payment-text">
+            Dirección: {reserva.reservation_address}
+          </p>
+          <p className="payment-text">
+            Número de Licencia: {reserva.license_number}
+          </p>
+          <p className="payment-text">
+            País de Emisión: {reserva.license_country}
+          </p>
         </div>
 
-        <div>
-          <h3>Datos del Vehículo:</h3>
-          <p>
+        <div className="payment-section">
+          <h3 className="payment-subtitle">Datos del Vehículo:</h3>
+          <p className="payment-text">
             Nombre: {reserva.vehicle?.vehicle_brand}{" "}
             {reserva.vehicle?.vehicle_model}
           </p>
-          <p>Placa: {reserva.vehicle?.vehicle_license_plate}</p>
-          <p>Año: {reserva.vehicle?.vehicle_year}</p>
-          <p>Color: {reserva.vehicle?.vehicle_color}</p>
+          <p className="payment-text">
+            Placa: {reserva.vehicle?.vehicle_license_plate}
+          </p>
+          <p className="payment-text">Año: {reserva.vehicle?.vehicle_year}</p>
+          <p className="payment-text">
+            Color: {reserva.vehicle?.vehicle_color}
+          </p>
         </div>
 
-        <div>
-          <h3>Datos de la Reserva:</h3>
-          <p>Lugar de recogida: {reserva.pickup_location}</p>
-          <p>Fecha de recogida: {reserva.pickup_date}</p>
-          <p>Hora de recogida: {reserva.pickup_time}</p>
-          <p>Lugar de devolución: {reserva.dropoff_location}</p>
-          <p>Fecha de devolución: {reserva.dropoff_date}</p>
-          <p>Hora de devolución: {reserva.dropoff_time}</p>
+        <div className="payment-section">
+          <h3 className="payment-subtitle">Datos de la Reserva:</h3>
+          <p className="payment-text">
+            Lugar de recogida: {reserva.pickup_location}
+          </p>
+          <p className="payment-text">
+            Fecha de recogida: {reserva.pickup_date}
+          </p>
+          <p className="payment-text">
+            Hora de recogida: {reserva.pickup_time}
+          </p>
+          <p className="payment-text">
+            Lugar de devolución: {reserva.dropoff_location}
+          </p>
+          <p className="payment-text">
+            Fecha de devolución: {reserva.dropoff_date}
+          </p>
+          <p className="payment-text">
+            Hora de devolución: {reserva.dropoff_time}
+          </p>
         </div>
 
-        <div>
-          <h3>Pago</h3>
-          <p>Alquiler por Hora: {reserva.vehicle?.vehicle_hour_rate}</p>
-          <p>Total Horas a Alquilar: {horasAlquilar.toFixed(2)}</p>
-          <p>Total de la Reserva: {totalReserva.toFixed(2)}</p>
+        <div className="payment-section">
+          <h3 className="payment-subtitle">Pago</h3>
+          <p className="payment-text">
+            Alquiler por Hora: {reserva.vehicle?.vehicle_hour_rate}
+          </p>
+          <p className="payment-text">
+            Total Horas a Alquilar: {horasAlquilar.toFixed(2)}
+          </p>
+          <p className="payment-text">
+            Total de la Reserva: {totalReserva.toFixed(2)}
+          </p>
         </div>
       </div>
 
-      <button className="" onClick={handleSimularPago}>
+      <button className="payment-button" onClick={handleSimularPago}>
         Confirmar y Pagar
       </button>
     </div>

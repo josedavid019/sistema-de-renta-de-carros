@@ -4,6 +4,7 @@ import { CategoryCard } from "../../components/cards/CategoryCard";
 import { VehicleCard } from "../../components/cards/VehicleCard";
 import { getAllCategories, getAllVehicles } from "../../api/vehicles.api";
 import { useReserva } from "../../context/ReservaContext";
+import "./ChoiceVehicle.css";
 
 export function ChoiceVehicle() {
   const location = useLocation();
@@ -18,21 +19,17 @@ export function ChoiceVehicle() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Obtener todas las categorías y vehículos
         const [categoriesResponse, vehiclesResponse] = await Promise.all([
           getAllCategories(),
           getAllVehicles(),
         ]);
 
-        // Filtrar solo vehículos disponibles (status_id = 1)
         const vehiculosDisponibles = vehiclesResponse.data.filter(
           (v) => v.status?.status_id === 1
         );
 
-        // Establecer los vehículos disponibles
         setVehiculos(vehiculosDisponibles);
 
-        // Filtrar categorías que tienen vehículos disponibles
         const categoriasConVehiculosDisponibles =
           categoriesResponse.data.filter((cat) =>
             vehiculosDisponibles.some(
@@ -40,7 +37,6 @@ export function ChoiceVehicle() {
             )
           );
 
-        // Establecer las categorías con vehículos disponibles
         setCategorias(categoriasConVehiculosDisponibles);
       } catch (err) {
         console.error("Error cargando datos:", err);
@@ -51,15 +47,13 @@ export function ChoiceVehicle() {
   }, []);
 
   const handleVehicleSelect = (vehicle) => {
-    // En lugar de solo navegar, también establecemos los datos del vehículo
     setReserva((prevReserva) => ({
       ...prevReserva,
-      selectedVehicle: vehicle, // Guardamos el vehículo seleccionado
+      selectedVehicle: vehicle,
     }));
 
-    // Ahora, navegamos a la siguiente página
     navigate("/reservar/datos", {
-      state: { ...stage1, selectedVehicle: vehicle }, // Pasamos también el vehículo en el estado
+      state: { ...stage1, selectedVehicle: vehicle },
     });
   };
 
@@ -67,36 +61,47 @@ export function ChoiceVehicle() {
     <div className="choice-vehicle-container">
       {!categoriaSeleccionada ? (
         <>
-          <h2>Selecciona una categoría</h2>
+          <h2 className="choice-title">Selecciona una categoría</h2>
           {categorias.length === 0 ? (
-            <p>No hay categorías disponibles con vehículos disponibles.</p>
+            <p className="choice-message">
+              No hay categorías disponibles con vehículos disponibles.
+            </p>
           ) : (
-            categorias.map((cat) => (
-              <CategoryCard
-                key={cat.category_id}
-                category_image={cat.category_image || "/img/default.jpg"}
-                category_name={cat.category_name}
-                category_description={cat.category_description}
-                onClick={() => setCategoriaSeleccionada(cat.category_id)}
-              />
-            ))
+            <div className="category-list">
+              {categorias.map((cat) => (
+                <div className="category-card" key={cat.category_id}>
+                  <CategoryCard
+                    category_image={cat.category_image || "/img/default.jpg"}
+                    category_name={cat.category_name}
+                    category_description={cat.category_description}
+                    onClick={() => setCategoriaSeleccionada(cat.category_id)}
+                  />
+                </div>
+              ))}
+            </div>
           )}
         </>
       ) : (
         <>
-          <button onClick={() => setCategoriaSeleccionada(null)}>
+          <button
+            onClick={() => setCategoriaSeleccionada(null)}
+            className="back-button"
+          >
             ← Volver a categorías
           </button>
-          <h2>Vehículos disponibles</h2>
-          {vehiculos
-            .filter((v) => v.category?.category_id === categoriaSeleccionada)
-            .map((v) => (
-              <VehicleCard
-                key={v.vehicle_id}
-                vehicle={v}
-                onSelect={() => handleVehicleSelect(v)}
-              />
-            ))}
+          <h2 className="choice-title">Vehículos disponibles</h2>
+          <div className="vehicle-list">
+            {vehiculos
+              .filter((v) => v.category?.category_id === categoriaSeleccionada)
+              .map((v) => (
+                <div className="vehicle-card" key={v.vehicle_id}>
+                  <VehicleCard
+                    vehicle={v}
+                    onSelect={() => handleVehicleSelect(v)}
+                  />
+                </div>
+              ))}
+          </div>
         </>
       )}
     </div>

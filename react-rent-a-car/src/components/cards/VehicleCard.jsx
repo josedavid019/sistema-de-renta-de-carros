@@ -23,34 +23,44 @@ export function VehicleCard({ vehicle, onSelect }) {
   return (
     <div className="vehicle-card">
       {/* Imagen y resumen */}
-      <div>
+      <div className="vehicle-card-summary">
         {vehicle_image && (
           <img
+            className="vehicle-card-image"
             src={vehicle_image[0]}
             alt={`${vehicle_brand} ${vehicle_model}`}
           />
         )}
-        <h3>
+        <h3 className="vehicle-card-title">
           {vehicle_brand} {vehicle_model}
         </h3>
-        <p>Precio por hora: ${vehicle_hour_rate}</p>
+        <p className="vehicle-card-price">
+          Precio por hora: ${vehicle_hour_rate}
+        </p>
       </div>
 
       {/* Botones */}
       <div className="vehicle-actions">
-        <button onClick={() => setShowDetails(true)}>Ver detalles</button>
-        <button onClick={onSelect}>Elegir</button>
+        <button
+          className="vehicle-action-button"
+          onClick={() => setShowDetails(true)}
+        >
+          Ver detalles
+        </button>
+        <button className="vehicle-action-button" onClick={onSelect}>
+          Elegir
+        </button>
       </div>
 
       {/* Modal de detalles */}
       {showDetails && (
         <div className="modal-overlay" onClick={() => setShowDetails(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            <h2>
+            <h2 className="modal-title">
               {vehicle_brand} {vehicle_model} ({vehicle_year})
             </h2>
-            <p>{vehicle_description}</p>
-            <ul>
+            <p className="modal-description">{vehicle_description}</p>
+            <ul className="modal-details-list">
               <li>
                 <strong>Color:</strong> {vehicle_color}
               </li>
@@ -76,7 +86,12 @@ export function VehicleCard({ vehicle, onSelect }) {
                 <strong>Tarifa:</strong> ${vehicle_hour_rate}/h
               </li>
             </ul>
-            <button onClick={() => setShowDetails(false)}>Cerrar</button>
+            <button
+              className="modal-close-button"
+              onClick={() => setShowDetails(false)}
+            >
+              Cerrar
+            </button>
           </div>
         </div>
       )}

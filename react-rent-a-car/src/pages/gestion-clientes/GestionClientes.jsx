@@ -69,12 +69,12 @@ export function GestionClientes() {
 
   return (
     <div className="gtclientes-container">
-      <h2>Gestión de Clientes</h2>
-      <div>
+      <h2 className="gtclientes-title">Gestión de Clientes</h2>
+      <div className="gtclientes-filter-section">
         <div>
-          <label>Filtrar columnas:</label>
-          <div>
-            <label>
+          <label className="gtclientes-filter-label">Filtrar columnas:</label>
+          <div className="gtclientes-checkbox-group">
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_id}
@@ -82,7 +82,7 @@ export function GestionClientes() {
               />{" "}
               ID
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_cedula}
@@ -90,7 +90,7 @@ export function GestionClientes() {
               />{" "}
               Cédula
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_firstname}
@@ -98,7 +98,7 @@ export function GestionClientes() {
               />{" "}
               Nombre
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_lastname}
@@ -106,7 +106,7 @@ export function GestionClientes() {
               />{" "}
               Apellido
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.edad}
@@ -114,7 +114,7 @@ export function GestionClientes() {
               />{" "}
               Edad
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_email}
@@ -122,7 +122,7 @@ export function GestionClientes() {
               />{" "}
               Email
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_phone}
@@ -130,7 +130,7 @@ export function GestionClientes() {
               />{" "}
               Teléfono
             </label>
-            <label>
+            <label className="gtclientes-checkbox-label">
               <input
                 type="checkbox"
                 checked={camposFiltro.user_created}
@@ -142,11 +142,14 @@ export function GestionClientes() {
         </div>
       </div>
 
-      <div className="">
+      <div className="gtclientes-search-section">
         <div>
-          <label htmlFor="campoBusqueda">Buscar por:</label>
+          <label htmlFor="campoBusqueda" className="gtclientes-label">
+            Buscar por:
+          </label>
           <select
             id="campoBusqueda"
+            className="gtclientes-select"
             value={campoBusqueda}
             onChange={(e) => setCampoBusqueda(e.target.value)}
           >
@@ -169,9 +172,13 @@ export function GestionClientes() {
             onChange={(e) => setSearchTexto(e.target.value)}
           />
         </div>
-        <label htmlFor="select-cantidad">Cantidad de registros:</label>
+
+        <label htmlFor="select-cantidad" className="gtclientes-label">
+          Cantidad de registros:
+        </label>
         <select
           id="select-cantidad"
+          className="gtclientes-select"
           value={cantidadRegistros}
           onChange={(e) => setCantidadRegistros(parseInt(e.target.value))}
         >
@@ -223,6 +230,7 @@ export function GestionClientes() {
                   Ver
                 </button>
                 <button
+                  className="gtclientes-btn-ver"
                   onClick={() =>
                     navigate(`/clientes/editar/${cliente.user_id}`)
                   }
