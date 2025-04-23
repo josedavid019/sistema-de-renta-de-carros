@@ -24,6 +24,7 @@ urlpatterns = [
     path('rents/', include('rents.urls')),
     path('report/', include('report.urls')),
     path('vehicles/', include('vehicles.urls')),
+    path('payments/', include('payments.urls')),
 
 
     # DOCUMENTATION API

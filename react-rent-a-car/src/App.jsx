@@ -7,12 +7,15 @@ import { Navbar } from "./components/nav-bar/Navbar";
 import { Footer } from "./components/footer/Footer";
 
 import { Home } from "./pages/home/Home";
+import { ChoiceVehicle } from "./pages/reservar/ChoiceVehicle";
+import { DataUser } from "./pages/reservar/DataUser";
+import { Payment } from "./pages/reservar/Payment";
+import { Invoice } from "./pages/reservar/Invoice";
 import { CatalogoCarros } from "./pages/catalogo_carros/CatalogoCarros";
 import { MisReservas } from "./pages/mis-reservas/MisReservas";
 import { Login } from "./pages/login/Login";
 import { Register } from "./pages/register/Register";
 import { Ayuda } from "./pages/ayuda/Ayuda";
-import { Reservar } from "./pages/reservar/Reservar";
 
 import { Admin } from "./pages/employees/Admin";
 import { Receptionist } from "./pages/employees/receptionist";
@@ -41,6 +44,10 @@ function App() {
         {/* Todos */}
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
+        <Route path="/reservar/vehiculo" element={<ChoiceVehicle />} />
+        <Route path="/reservar/datos" element={<DataUser />} />
+        <Route path="/reservar/pago" element={<Payment />} />
+        <Route path="/reservar/factura" element={<Invoice />} />
         <Route path="/catalogo" element={<CatalogoCarros />} />
         <Route path="/catalogo/:categoria" element={<CarrosPorCategoria />} />
         <Route path="/mis-reservas" element={<MisReservas />} />
@@ -61,7 +68,6 @@ function App() {
           }
         />
         <Route path="/ayuda" element={<Ayuda />} />
-        <Route path="/reservar" element={<Reservar />} />
         {/* Rutas protegidas para el admin */}
         <Route element={<PrivateRoute allowedRoles={["admin"]} />}>
           <Route path="/admin" element={<Admin />} />

@@ -1,9 +1,10 @@
 from django.urls import path, include
 from rest_framework import routers
-from rents import views
+from payments import views
 
 router = routers.DefaultRouter()
-router.register(r'reservations', views.ReservationView,'reservation')
+router.register(r'payments', views.PaymentView,'payments')
+router.register(r'invoices', views.InvoiceView,'invoices')
 
 urlpatterns = [
     path('api/', include(router.urls)),

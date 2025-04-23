@@ -63,8 +63,15 @@ def login_user(request):
                 'user_id': user.user_id,
                 'username': user.user_username,
                 'firstname': user.user_firstname,
+                'secondname': user.user_secondname,
                 'lastname': user.user_lastname,
+                'second_lastname': user.user_second_lastname,
+                'dateofbirth': user.user_dateofbirth,
+                'cedula': user.user_cedula,
+                'email': user.user_email,
+                'phone': user.user_phone,
                 'genre': user.user_genre,
+                'address': user.user_address,
                 'role': user.role.role_name if user.role else None
             })
         else:

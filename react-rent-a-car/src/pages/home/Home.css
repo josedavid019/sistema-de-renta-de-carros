@@ -62,10 +62,10 @@
 }
 .home-select-lugar-recogida,
 .home-input-fecha-recogida,
-.home-select-hora-recogida,
+.home-input-hora-recogida,
 .home-select-lugar-devolucion,
 .home-input-fecha-devolucion,
-.home-select-hora-devolucion {
+.home-input-hora-devolucion {
   padding: 0.7rem;
   font-size: 1rem;
   border-radius: 10px;

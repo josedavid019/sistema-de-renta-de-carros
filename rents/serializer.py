@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import Reserva
+from .models import Reservation
 
-class ReservaSerializer(serializers.ModelSerializer):
+class ReservationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Reserva
+        model = Reservation
         fields = '__all__'
