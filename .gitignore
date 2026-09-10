@@ -94,3 +94,19 @@ pip-log.txt
 
 # Claves SSH (si las tienes en tu proyecto)
 *.pub
+# Para Node.js (React)
+node_modules/
+dist/
+build/
+.env
+
+# Para Python (Django)
+venv/
+*.pyc
+__pycache__/
+*.sqlite3
+
+# Archivos temporales de IDEs
+.vscode/
+.idea/
+*.swp
